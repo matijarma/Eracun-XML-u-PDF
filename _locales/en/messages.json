@@ -1,0 +1,275 @@
+﻿{
+  "groupApp": {
+    "message": "Application"
+  },
+  "groupPdf": {
+    "message": "PDF Settings"
+  },
+  "groupStorage": {
+    "message": "Storage"
+  },
+  "extensionName": {
+    "message": "XML to PDF e-Ra\u010dun Converter"
+  },
+  "extensionDescription": {
+    "message": "Detects and converts Croatian UBL e-Ra\u010dun to PDF."
+  },
+  "pageTitle": {
+    "message": "XML to PDF"
+  },
+  "appTitle": {
+    "message": "XML to PDF e-Ra\u010dun Converter"
+  },
+  "appSubtitle": {
+    "message": "Fast, secure PDF generation from e-Ra\u010dun XML"
+  },
+  "privacyNoteHtml": {
+    "message": "The app runs entirely in your browser - your data never leaves your computer.<br/><b>PDF invoices are <u>not</u> legal documents.</b>"
+  },
+  "settingsButton": {
+    "message": "Settings"
+  },
+  "settingDisplayMode": {
+    "message": "Display mode"
+  },
+  "settingTheme": {
+    "message": "Theme"
+  },
+  "settingLanguage": {
+    "message": "Jezik"
+  },
+  "settingPdfLanguage": {
+    "message": "PDF language"
+  },
+  "settingRetention": {
+    "message": "Keep PDF and XML in browser on this device"
+  },
+  "retentionDays": {
+    "message": "$1 "
+  },
+  "retentionDaysSingle": {
+    "message": "day"
+  },
+  "retentionDaysPlural": {
+    "message": "days"
+  },
+  "retentionImmediate": {
+    "message": "0 (cleared on close)"
+  },
+  "settingPdfColor": {
+    "message": "PDF accent color"
+  },
+  "settingPdfLogo": {
+    "message": "PDF logo"
+  },
+  "pdfLogoUpload": {
+    "message": "Upload logo"
+  },
+  "pdfLogoChange": {
+    "message": "Change logo"
+  },
+  "pdfLogoRemove": {
+    "message": "Remove"
+  },
+  "languageCroatian": {
+    "message": "Hrvatski"
+  },
+  "languageEnglish": {
+    "message": "English"
+  },
+  "uploadText": {
+    "message": "Click or drag XML or ZIP files"
+  },
+  "uploadHint": {
+    "message": "ZIP archives can include multiple XML files"
+  },
+  "detectedTitle": {
+    "message": "Found on page"
+  },
+  "selectAll": {
+    "message": "Select all"
+  },
+  "deselectAll": {
+    "message": "Clear selection"
+  },
+  "convertSelectedCount": {
+    "message": "Convert selected ($1)"
+  },
+  "resultsTitle": {
+    "message": "Conversion results"
+  },
+  "clearAll": {
+    "message": "Clear all"
+  },
+  "downloadAllZip": {
+    "message": "Download all (ZIP)"
+  },
+  "downloadPdf": {
+    "message": "PDF"
+  },
+  "downloadXml": {
+    "message": "XML"
+  },
+  "removeFile": {
+    "message": "Remove file"
+  },
+  "noticeInvalidXml": {
+    "message": "Skipped $1 file(s): not valid e-Račun XML."
+  },
+  "noticeDuplicateSkipped": {
+    "message": "Skipped $1 duplicate file(s) (identical file + settings already exist)."
+  },
+  "noticeZipNoValid": {
+    "message": "ZIP \"$1\": no valid e-Račun XML files found."
+  },
+  "noticeZipSummary": {
+    "message": "ZIP \"$1\": valid XMLs $2, converted $3, skipped $4 (already exists)."
+  },
+  "noticeZipSummaryNoDuplicates": {
+    "message": "ZIP \"$1\": valid XMLs $2, converted $3."
+  },
+  "downloadSelectedCount": {
+    "message": "Download selected ($1)"
+  },
+  "previewPdf": {
+    "message": "Preview PDF"
+  },
+  "closePreview": {
+    "message": "Close preview"
+  },
+  "legendColor": {
+    "message": "Accent"
+  },
+  "legendLogo": {
+    "message": "Logo"
+  },
+  "legendLogoSet": {
+    "message": "set"
+  },
+  "legendLogoNone": {
+    "message": "none"
+  },
+  "legendLanguage": {
+    "message": "Language"
+  },
+  "legendExpires": {
+    "message": "Expires"
+  },
+  "backToStart": {
+    "message": "Back to start"
+  },
+  "footerLinkText": {
+    "message": "Aning services - Accounting and tax consulting"
+  },
+  "displayModeLabel": {
+    "message": "Display mode"
+  },
+  "displayModePopup": {
+    "message": "Popup"
+  },
+  "displayModeSidepanel": {
+    "message": "Side panel"
+  },
+  "themeModeLabel": {
+    "message": "Theme"
+  },
+  "themeLight": {
+    "message": "Light theme"
+  },
+  "themeAuto": {
+    "message": "Auto theme"
+  },
+  "themeDark": {
+    "message": "Dark theme"
+  },
+  "downloadSingle": {
+    "message": "Download"
+  },
+  "errorProcessingFile": {
+    "message": "Error processing: $1"
+  },
+  "errorFileNotFound": {
+    "message": "Error: File not found in memory."
+  },
+  "pdfFileName": {
+    "message": "Invoice-$1.pdf"
+  },
+  "zipFileName": {
+    "message": "eInvoices_All_$1.zip"
+  },
+  "unknownInvoiceId": {
+    "message": "unknown"
+  },
+  "pdfInvoiceTitle": {
+    "message": "INVOICE"
+  },
+  "pdfIssueDateLabel": {
+    "message": "Issue date:"
+  },
+  "pdfDueDateLabel": {
+    "message": "Due date:"
+  },
+  "pdfDeliveryDateLabel": {
+    "message": "Delivery date:"
+  },
+  "pdfReferenceLabel": {
+    "message": "Model / Reference:"
+  },
+  "pdfSupplierLabel": {
+    "message": "SUPPLIER:"
+  },
+  "pdfCustomerLabel": {
+    "message": "CUSTOMER:"
+  },
+  "pdfTaxIdLabel": {
+    "message": "VAT ID:"
+  },
+  "pdfContactLabel": {
+    "message": "Contact:"
+  },
+  "pdfTableIndex": {
+    "message": "#"
+  },
+  "pdfTableDescription": {
+    "message": "Item description"
+  },
+  "pdfTableQuantity": {
+    "message": "Quantity"
+  },
+  "pdfTableUnitPrice": {
+    "message": "Price"
+  },
+  "pdfTableVat": {
+    "message": "VAT"
+  },
+  "pdfTableAmount": {
+    "message": "Amount"
+  },
+  "pdfSubtotalLabel": {
+    "message": "Subtotal:"
+  },
+  "pdfVatLabel": {
+    "message": "VAT ($1%):"
+  },
+  "pdfTotalLabel": {
+    "message": "TOTAL:"
+  },
+  "pdfPaymentHeading": {
+    "message": "Payment details:"
+  },
+  "pdfPaymentMethodLabel": {
+    "message": "Method:"
+  },
+  "pdfPaymentAccountLabel": {
+    "message": "IBAN:"
+  },
+  "pdfPaymentReferenceLabel": {
+    "message": "Reference:"
+  },
+  "pdfNoteLabel": {
+    "message": "Note:"
+  },
+  "pdfLegalNotice": {
+    "message": "This document is not a legal document. The PDF is generated automatically from the e-Ra\u010dun XML."
+  }
+}

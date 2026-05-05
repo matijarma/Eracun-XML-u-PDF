@@ -1,0 +1,45 @@
+﻿{
+  "manifest_version": 3,
+  "name": "__MSG_extensionName__",
+  "version": "1.0.41",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "hr",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "sidePanel"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "64": "icons/icon-64.png",
+      "96": "icons/icon-96.png",
+      "128": "icons/icon-128.png",
+      "256": "icons/icon-256.png",
+      "512": "icons/icon-512.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "popup.html"
+  },
+  "icons": {
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "64": "icons/icon-64.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png",
+    "256": "icons/icon-256.png",
+    "512": "icons/icon-512.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}

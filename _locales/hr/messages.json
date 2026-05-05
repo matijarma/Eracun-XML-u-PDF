@@ -1,0 +1,275 @@
+﻿{
+  "groupApp": {
+    "message": "Aplikacija"
+  },
+  "groupPdf": {
+    "message": "PDF Postavke"
+  },
+  "groupStorage": {
+    "message": "Pohrana"
+  },
+  "extensionName": {
+    "message": "XML u PDF konverter E-ra\u010duna"
+  },
+  "extensionDescription": {
+    "message": "Detektira i konvertira hrvatske UBL e-ra\u010dune u PDF."
+  },
+  "pageTitle": {
+    "message": "XML u PDF"
+  },
+  "appTitle": {
+    "message": "XML u PDF konverter E-ra\u010duna"
+  },
+  "appSubtitle": {
+    "message": "Brzo i sigurno generiranje PDF-a iz eRa\u010dun XML-a"
+  },
+  "privacyNoteHtml": {
+    "message": "Aplikacija radi isklju\u010divo u pregledniku - podatci nikada ne napu\u0161taju va\u0161e ra\u010dunalo.<br/><b>PDF ra\u010dun <u>nije</u> pravni dokument.</b>"
+  },
+  "settingsButton": {
+    "message": "Postavke"
+  },
+  "settingDisplayMode": {
+    "message": "Na\u010din prikaza"
+  },
+  "settingTheme": {
+    "message": "Tema"
+  },
+  "settingLanguage": {
+    "message": "Language"
+  },
+  "settingPdfLanguage": {
+    "message": "Jezik PDF računa"
+  },
+  "settingRetention": {
+    "message": "Zadr\u017ei PDF/XML u pregledniku na ovom ra\u010dunalu"
+  },
+  "retentionDays": {
+    "message": "$1 "
+  },
+  "retentionDaysSingle": {
+    "message": " dan"
+  },
+  "retentionDaysPlural": {
+    "message": "dana"
+  },
+  "retentionImmediate": {
+    "message": "0 (bri\u0161e se pri zatvaranju)"
+  },
+  "settingPdfColor": {
+    "message": "Boja"
+  },
+  "settingPdfLogo": {
+    "message": "Logo"
+  },
+  "pdfLogoUpload": {
+    "message": "U\u010ditaj logo"
+  },
+  "pdfLogoChange": {
+    "message": "Promijeni logo"
+  },
+  "pdfLogoRemove": {
+    "message": "Ukloni"
+  },
+  "languageCroatian": {
+    "message": "Hrvatski"
+  },
+  "languageEnglish": {
+    "message": "English"
+  },
+  "uploadText": {
+    "message": "Klikni ili povuci XML ili ZIP datoteke"
+  },
+  "uploadHint": {
+    "message": "ZIP arhive mogu sadr\u017eavati vi\u0161e XML datoteka"
+  },
+  "detectedTitle": {
+    "message": "Prona\u0111eno na stranici"
+  },
+  "selectAll": {
+    "message": "Odaberi sve"
+  },
+  "deselectAll": {
+    "message": "Poni\u0161ti odabir"
+  },
+  "convertSelectedCount": {
+    "message": "Pretvori odabrano ($1)"
+  },
+  "resultsTitle": {
+    "message": "Rezultati konverzije"
+  },
+  "clearAll": {
+    "message": "Obri\u0161i sve"
+  },
+  "downloadAllZip": {
+    "message": "Preuzmi sve (ZIP)"
+  },
+  "downloadPdf": {
+    "message": "PDF"
+  },
+  "downloadXml": {
+    "message": "XML"
+  },
+  "removeFile": {
+    "message": "Ukloni datoteku"
+  },
+  "noticeInvalidXml": {
+    "message": "Presko\u010deno $1 datoteka: nije valjani e-Ra\u010dun XML."
+  },
+  "noticeDuplicateSkipped": {
+    "message": "Presko\u010deno $1 duplikata (identi\u010dna datoteka + postavke ve\u0107 postoje)."
+  },
+  "noticeZipNoValid": {
+    "message": "ZIP \"$1\": nije prona\u0111en nijedan valjani e-Ra\u010dun XML."
+  },
+  "noticeZipSummary": {
+    "message": "ZIP \"$1\": valjanih XML $2, pretvoreno $3, presko\u010deno $4 (ve\u0107 postoji)."
+  },
+  "noticeZipSummaryNoDuplicates": {
+    "message": "ZIP \"$1\": valjanih XML $2, pretvoreno $3."
+  },
+  "downloadSelectedCount": {
+    "message": "Preuzmi odabrano ($1)"
+  },
+  "previewPdf": {
+    "message": "Pregledaj PDF"
+  },
+  "closePreview": {
+    "message": "Zatvori pregled"
+  },
+  "legendColor": {
+    "message": "Boja"
+  },
+  "legendLogo": {
+    "message": "Logo"
+  },
+  "legendLogoSet": {
+    "message": "postavljen"
+  },
+  "legendLogoNone": {
+    "message": "nema"
+  },
+  "legendLanguage": {
+    "message": "Jezik"
+  },
+  "legendExpires": {
+    "message": "Istje\u010de"
+  },
+  "backToStart": {
+    "message": "Natrag na po\u010detak"
+  },
+  "footerLinkText": {
+    "message": "Aning usluge - Knjigovodstvo i porezno savjetovanje"
+  },
+  "displayModeLabel": {
+    "message": "Na\u010din prikaza"
+  },
+  "displayModePopup": {
+    "message": "Popup"
+  },
+  "displayModeSidepanel": {
+    "message": "Bo\u010dni panel"
+  },
+  "themeModeLabel": {
+    "message": "Tema"
+  },
+  "themeLight": {
+    "message": "Svijetla tema"
+  },
+  "themeAuto": {
+    "message": "Automatska tema"
+  },
+  "themeDark": {
+    "message": "Tamna tema"
+  },
+  "downloadSingle": {
+    "message": "Preuzmi"
+  },
+  "errorProcessingFile": {
+    "message": "Gre\u0161ka kod: $1"
+  },
+  "errorFileNotFound": {
+    "message": "Gre\u0161ka: Datoteka nije prona\u0111ena u memoriji."
+  },
+  "pdfFileName": {
+    "message": "Racun-$1.pdf"
+  },
+  "zipFileName": {
+    "message": "eRacuni_Sve_$1.zip"
+  },
+  "unknownInvoiceId": {
+    "message": "nepoznato"
+  },
+  "pdfInvoiceTitle": {
+    "message": "RA\u010cUN"
+  },
+  "pdfIssueDateLabel": {
+    "message": "Datum izdavanja:"
+  },
+  "pdfDueDateLabel": {
+    "message": "Datum dospije\u0107a:"
+  },
+  "pdfDeliveryDateLabel": {
+    "message": "Datum isporuke:"
+  },
+  "pdfReferenceLabel": {
+    "message": "Model / Poziv na broj:"
+  },
+  "pdfSupplierLabel": {
+    "message": "PRODAVATELJ:"
+  },
+  "pdfCustomerLabel": {
+    "message": "KUPAC:"
+  },
+  "pdfTaxIdLabel": {
+    "message": "OIB:"
+  },
+  "pdfContactLabel": {
+    "message": "Kontakt:"
+  },
+  "pdfTableIndex": {
+    "message": "#"
+  },
+  "pdfTableDescription": {
+    "message": "Opis stavke"
+  },
+  "pdfTableQuantity": {
+    "message": "Koli\u010dina"
+  },
+  "pdfTableUnitPrice": {
+    "message": "Cijena"
+  },
+  "pdfTableVat": {
+    "message": "PDV"
+  },
+  "pdfTableAmount": {
+    "message": "Iznos"
+  },
+  "pdfSubtotalLabel": {
+    "message": "Ukupno (neto):"
+  },
+  "pdfVatLabel": {
+    "message": "PDV ($1%):"
+  },
+  "pdfTotalLabel": {
+    "message": "SVEUKUPNO:"
+  },
+  "pdfPaymentHeading": {
+    "message": "Podaci za pla\u0107anje:"
+  },
+  "pdfPaymentMethodLabel": {
+    "message": "Na\u010din:"
+  },
+  "pdfPaymentAccountLabel": {
+    "message": "IBAN:"
+  },
+  "pdfPaymentReferenceLabel": {
+    "message": "Poziv na broj:"
+  },
+  "pdfNoteLabel": {
+    "message": "Napomena:"
+  },
+  "pdfLegalNotice": {
+    "message": "Ovaj dokument nije pravni dokument. PDF je automatski generiran iz e-ra\u010dun XML-a."
+  }
+}
