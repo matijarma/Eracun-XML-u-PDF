@@ -1,54 +1,75 @@
-# XML to PDF e-Invoice Converter 🇭🇷
+# XMLuPDF + Offers (Chrome Extension)
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
+Source code for the Chrome extension that:
+- converts Croatian UBL e-invoice XML files to PDF (`XML2PDF` mode)
+- creates professional offer PDFs (`Offers` mode)
+- runs fully local in the browser
 
-A privacy-first Chrome Extension and Progressive Web App (PWA) designed to convert Croatian UBL 2.1 e-invoices (`.xml`) into human-readable PDF files. Developed by **Aning usluge d.o.o.** to assist Croatian businesses with the 2026 Fiscalization mandate.
+This README reflects `v2 built - added offers and renamed` (commit `1d5c450`).
 
-## 🚀 Features
+## What Changed in v2
 
-- **100% Client-Side:** No server uploads. Parsing and PDF generation happen entirely within the user's browser.
-- **UBL 2.1 Support:** Specifically tuned for the Croatian implementation of the EN 16931 standard.
-- **Auto-Detection:** The extension scans pages for linked XML files and offers instant conversion.
-- **Custom Branding:** Users can embed their own logo into the generated PDF.
-- **Bulk Processing:** Convert multiple invoices simultaneously.
-- **Offline Capable:** The PWA functions fully without an internet connection after initial load.
+- Product renamed to `XMLuPDF + Offers`.
+- New `Offers` tab and workflow added.
+- New offer PDF engine added (`offer-pdf-generator.js`).
+- Offer state and shared helpers introduced (`offers.js`, `shared.js`).
+- Localized UI text extended for offer generation (`_locales/en`, `_locales/hr`).
 
-## 🛠 Tech Stack
+## Core Features
 
-- **Vanilla JavaScript:** Core logic (ES6+).
-- **jsPDF:** For PDF document generation.
-- **jsPDF-AutoTable:** For rendering invoice line items.
-- **JSZip:** For bundling multiple PDFs into a single download.
+### XML2PDF mode
 
-## 📦 Installation
+- Convert one or many Croatian UBL e-invoice XML files into readable PDF.
+- Load ZIP archives and scan recursively for valid XML invoices.
+- Detect XML links on the active page and ingest them.
+- Preview generated PDFs and download single or bulk outputs.
+- Optional local retention in browser storage.
 
-### As a PWA
-Visit `https://aning.hr/XMLuPDF-pwa/` and click "Install App" in your browser address bar.
+### Offers mode
 
-### As a Chrome Extension (Developer Mode)
-1. Clone this repository.
-2. Open Chrome and navigate to `chrome://extensions/`.
-3. Enable "Developer mode" (top right).
-4. Click "Load unpacked" and select the folder containing `manifest.json`.
+- Create and manage issuer profiles (manual entry or import issuer data from XML).
+- Create offer header/content, line items, VAT, discount, and totals.
+- Auto-suggest offer numbers with configurable prefix and validity defaults.
+- Generate offer PDF, preview instantly, and download on demand.
+- Persist generated offers locally (subject to retention settings).
 
-## 🛡️ Privacy & Security
+### Shared PDF branding
 
-This project was built with a "Zero-Knowledge" philosophy:
-1.  **Input:** The user selects a file from their local disk.
-2.  **Process:** The `invoice-parser.js` reads the DOM of the XML in the browser memory.
-3.  **Output:** The `pdf-generator.js` draws the PDF blob and triggers a browser download.
-4.  **Network:** No API calls are made to external servers for data processing.
+- Set PDF language, accent color, and logo.
+- Shared branding applies to both invoice PDFs and offer PDFs.
 
-## 📄 License
+## Privacy Model
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+All processing is local:
+- XML parsing and PDF generation run in-browser.
+- No server upload is required for conversion or offer generation.
+- Stored data remains in local browser storage on the same device.
 
-## 👤 Author
+## Permissions (Manifest v3)
+
+- `activeTab`: user-triggered access to the currently active tab for XML link detection.
+- `storage`: saves settings and optional local retained data.
+- `sidePanel`: allows rendering the UI in Chrome side panel.
+- Host access/content script on all URLs: enables XML link discovery on pages the user opens.
+
+## Project Structure
+
+- `popup.html` / `popup.js`: main UI shell and XML2PDF logic.
+- `offers.js`: Offers mode state, form logic, persistence, preview/download flow.
+- `offer-pdf-generator.js`: offer PDF layout and rendering.
+- `pdf-generator.js`: invoice PDF renderer for XML2PDF mode.
+- `invoice-parser.js`: Croatian UBL invoice XML extraction.
+- `shared.js`: shared UI utilities and helpers.
+- `_locales/`: English and Croatian text resources.
+
+## Local Development
+
+1. Open `chrome://extensions`.
+2. Enable `Developer mode`.
+3. Click `Load unpacked`.
+4. Select this `chrome/` directory (the one containing `manifest.json`).
+
+## Author
 
 **Aning usluge d.o.o. / Matija Radeljak**
-* Website: [aning.hr](https://aning.hr)
-* GitHub: [@matijarma](https://github.com/matijarma)
 
----
-*Developed to support the Croatian business community during the transition to Fiscalization 2.0 (Jan 2026).*
