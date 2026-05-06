@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const previewClose = document.getElementById('preview-close');
     const previewFrame = document.getElementById('preview-iframe');
     const previewTitle = document.getElementById('preview-title');
+    let previewModal = null;
 
     const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -168,28 +169,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (previewOverlay) {
-            previewOverlay.addEventListener('click', (event) => {
-                if (event.target === previewOverlay) {
-                    closePreview();
+        if (previewOverlay && window.AppShared && window.AppShared.Modal) {
+            previewModal = window.AppShared.Modal.create(previewOverlay, {
+                initialFocus: () => previewClose,
+                onClose: () => {
+                    if (previewFrame) previewFrame.src = '';
+                    if (activePreviewUrl) {
+                        URL.revokeObjectURL(activePreviewUrl);
+                        activePreviewUrl = '';
+                        activePreviewId = '';
+                    }
                 }
             });
         }
         if (previewClose) {
-            previewClose.addEventListener('click', closePreview);
+            previewClose.addEventListener('click', () => closePreview());
         }
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                closePreview();
-            }
-        });
-
     }
 
     function toggleSettingsPanel() {
         const isOpen = settingsPanel.classList.toggle('open');
         settingsToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         settingsPanel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        document.body.classList.toggle('settings-open', isOpen);
     }
 
     async function loadSettings() {
@@ -225,24 +227,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    async function loadLocaleMessages(language) {
-        if (!language) return {};
-        try {
-            const url = chrome.runtime.getURL(`_locales/${language}/messages.json`);
-            const response = await fetch(url);
-            if (!response.ok) return {};
-            return await response.json();
-        } catch (e) {
-            return {};
-        }
+    function loadLocaleMessages(language) {
+        if (!language) return Promise.resolve({});
+        return window.AppShared.loadLocaleMessages(language);
     }
 
     function normalizeLanguage(language) {
-        if (!language) return 'hr';
-        const lower = String(language).toLowerCase();
-        if (lower.startsWith('hr')) return 'hr';
-        if (lower.startsWith('en')) return 'en';
-        return 'hr';
+        return window.AppShared.normalizeLanguage(language);
     }
 
     async function getPdfMessagesForLanguage(language) {
@@ -254,12 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function formatMessage(template, substitutions) {
-        if (!template) return '';
-        if (!substitutions || substitutions.length === 0) return template;
-        return template.replace(/\$(\d+)/g, (match, index) => {
-            const value = substitutions[Number(index) - 1];
-            return value === undefined ? '' : value;
-        });
+        return window.AppShared.formatMessage(template, substitutions);
     }
 
     function getMessage(messages, key, substitutions) {
@@ -789,6 +775,7 @@ document.addEventListener('DOMContentLoaded', () => {
             invalidCount: 0,
             duplicateCountNonZip: 0
         };
+        const issuerCandidates = [];
         let didUpdate = false;
 
         for (const file of files) {
@@ -808,6 +795,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const parser = new InvoiceParser(xmlString, options.language);
                 const data = parser.parse();
+                const issuerCandidate = extractIssuerCandidateFromInvoice(data);
+                if (issuerCandidate) {
+                    issuerCandidates.push(issuerCandidate);
+                }
                 const invoiceId = data.invoiceId || pdfI18n('unknownInvoiceId') || 'unknown';
                 const recipientName = data.customer && data.customer.name ? data.customer.name.trim() : '';
                 const invoiceTotal = Number.isFinite(data.totals && data.totals.total) ? data.totals.total : null;
@@ -880,7 +871,117 @@ document.addEventListener('DOMContentLoaded', () => {
             showResults();
         }
 
+        if (issuerCandidates.length > 0) {
+            await mergeOfferIssuerCandidates(issuerCandidates);
+        }
+
         return stats;
+    }
+
+    function normalizeIssuerIdentityValue(value) {
+        return String(value || '')
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^A-Za-z0-9\s]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .toUpperCase();
+    }
+
+    function normalizeOfferIssuerCandidate(candidate) {
+        const source = candidate && candidate.source === 'manual' ? 'manual' : 'xml';
+        return {
+            id: candidate && candidate.id ? String(candidate.id) : '',
+            source,
+            name: candidate && candidate.name ? String(candidate.name).trim() : '',
+            address: candidate && candidate.address ? String(candidate.address).trim() : '',
+            city: candidate && candidate.city ? String(candidate.city).trim() : '',
+            oib: candidate && candidate.oib ? String(candidate.oib).trim() : '',
+            iban: candidate && candidate.iban ? String(candidate.iban).trim() : '',
+            contact: candidate && candidate.contact ? String(candidate.contact).trim() : '',
+            email: candidate && candidate.email ? String(candidate.email).trim() : '',
+            web: candidate && candidate.web ? String(candidate.web).trim() : '',
+            createdAt: Number.isFinite(Number(candidate && candidate.createdAt)) ? Number(candidate.createdAt) : Date.now(),
+            updatedAt: Number.isFinite(Number(candidate && candidate.updatedAt)) ? Number(candidate.updatedAt) : Date.now()
+        };
+    }
+
+    function extractIssuerCandidateFromInvoice(data) {
+        if (!data || !data.supplier) return null;
+        const supplier = data.supplier || {};
+        const payment = data.payment || {};
+        const candidate = normalizeOfferIssuerCandidate({
+            source: 'xml',
+            name: supplier.name,
+            address: supplier.address,
+            city: supplier.city,
+            oib: supplier.vatId,
+            iban: payment.account,
+            contact: supplier.contact,
+            email: '',
+            web: ''
+        });
+        return candidate.name ? candidate : null;
+    }
+
+    function buildIssuerMatchKey(issuer) {
+        const normalized = normalizeOfferIssuerCandidate(issuer);
+        const oibKey = normalizeIssuerIdentityValue(normalized.oib);
+        if (oibKey) return `oib:${oibKey}`;
+        const nameKey = normalizeIssuerIdentityValue(normalized.name);
+        const addressKey = normalizeIssuerIdentityValue(normalized.address);
+        const cityKey = normalizeIssuerIdentityValue(normalized.city);
+        return `name:${nameKey}|address:${addressKey}|city:${cityKey}`;
+    }
+
+    async function mergeOfferIssuerCandidates(candidates) {
+        if (!Array.isArray(candidates) || candidates.length === 0) return;
+
+        try {
+            const storage = await chrome.storage.local.get(['offerIssuers']);
+            const existingRaw = Array.isArray(storage.offerIssuers) ? storage.offerIssuers : [];
+            const issuers = existingRaw.map((issuer) => normalizeOfferIssuerCandidate(issuer)).filter((issuer) => issuer.name);
+            const now = Date.now();
+
+            candidates.forEach((candidateRaw) => {
+                const candidate = normalizeOfferIssuerCandidate(candidateRaw);
+                if (!candidate.name) return;
+                const candidateKey = buildIssuerMatchKey(candidate);
+                const existingIndex = issuers.findIndex((issuer) => buildIssuerMatchKey(issuer) === candidateKey);
+
+                if (existingIndex >= 0) {
+                    const current = issuers[existingIndex];
+                    issuers[existingIndex] = normalizeOfferIssuerCandidate({
+                        ...current,
+                        ...candidate,
+                        id: current.id || `issuer-${now.toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
+                        source: current.source === 'manual' ? 'manual' : 'xml',
+                        name: candidate.name || current.name,
+                        address: candidate.address || current.address,
+                        city: candidate.city || current.city,
+                        oib: candidate.oib || current.oib,
+                        iban: candidate.iban || current.iban,
+                        contact: candidate.contact || current.contact,
+                        email: candidate.email || current.email,
+                        web: candidate.web || current.web,
+                        createdAt: current.createdAt || now,
+                        updatedAt: now
+                    });
+                } else {
+                    issuers.push(normalizeOfferIssuerCandidate({
+                        ...candidate,
+                        id: candidate.id || `issuer-${now.toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
+                        source: 'xml',
+                        createdAt: now,
+                        updatedAt: now
+                    }));
+                }
+            });
+
+            await chrome.storage.local.set({ offerIssuers: issuers });
+        } catch (error) {
+            console.warn('Could not merge issuer candidates from XML2PDF processing:', error);
+        }
     }
 
     function flashItem(internalId) {
@@ -1133,7 +1234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         downloadZip(target);
     }
 
-    function openPreview(file) {
+    function openPreview(file, triggerEl) {
         if (!file || !file.internalId) return;
         const blob = pdfBlobs[file.internalId];
         if (!blob) {
@@ -1151,13 +1252,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (previewTitle) {
             previewTitle.textContent = file.pdfName || 'PDF';
         }
-        if (previewOverlay) {
+        if (previewModal) {
+            previewModal.open(triggerEl || (document.activeElement instanceof HTMLElement ? document.activeElement : null));
+        } else if (previewOverlay) {
             previewOverlay.classList.add('open');
             previewOverlay.setAttribute('aria-hidden', 'false');
         }
     }
 
     function closePreview() {
+        if (previewModal && previewModal.isOpen()) {
+            previewModal.close();
+            return;
+        }
         if (previewOverlay) {
             previewOverlay.classList.remove('open');
             previewOverlay.setAttribute('aria-hidden', 'true');
@@ -1204,13 +1311,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         if (detectedFiles.length > 0) {
-                            detectedSection.style.display = 'block';
+                            detectedSection.classList.remove('is-hidden');
                             renderDetectedList();
                             return;
                         }
                     }
 
-                    detectedSection.style.display = 'none';
+                    detectedSection.classList.add('is-hidden');
                     detectedList.innerHTML = '';
                     updateSelectAllLabel();
                 });
@@ -1274,7 +1381,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateResultsVisibility() {
         if (!resultsSection) return;
-        resultsSection.style.display = processedFiles.length > 0 ? 'block' : 'none';
+        resultsSection.classList.toggle('is-hidden', processedFiles.length === 0);
         if (downloadAllBtn) {
             downloadAllBtn.disabled = processedFiles.length === 0;
         }
@@ -1466,7 +1573,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const trashBtn = document.createElement('button');
             trashBtn.type = 'button';
-            trashBtn.className = 'download-btn item-trash';
+            trashBtn.className = 'btn-icon btn-icon-danger item-trash';
             const removeLabel = uiI18n('removeFile') || 'Remove file';
             trashBtn.setAttribute('title', removeLabel);
             trashBtn.setAttribute('aria-label', removeLabel);
@@ -1577,11 +1684,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showError(message) {
-        const toast = document.getElementById('errorToast');
-        toast.textContent = message;
-        toast.style.display = 'block';
-        setTimeout(() => {
-            toast.style.display = 'none';
-        }, 4000);
+        window.AppShared.Toast.show(message, { variant: 'error' });
     }
 });

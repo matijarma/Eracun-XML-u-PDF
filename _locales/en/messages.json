@@ -1,30 +1,39 @@
-﻿{
+{
   "groupApp": {
     "message": "Application"
   },
   "groupPdf": {
     "message": "PDF Settings"
   },
+  "groupOffers": {
+    "message": "Offers"
+  },
   "groupStorage": {
     "message": "Storage"
   },
   "extensionName": {
-    "message": "XML to PDF e-Ra\u010dun Converter"
+    "message": "XMLuPDF + Offers"
   },
   "extensionDescription": {
-    "message": "Detects and converts Croatian UBL e-Ra\u010dun to PDF."
+    "message": "Converts Croatian UBL e-invoices to PDF and generates professional offers."
   },
   "pageTitle": {
-    "message": "XML to PDF"
+    "message": "XMLuPDF + Offers"
   },
   "appTitle": {
-    "message": "XML to PDF e-Ra\u010dun Converter"
+    "message": "XMLuPDF + Offers"
   },
   "appSubtitle": {
-    "message": "Fast, secure PDF generation from e-Ra\u010dun XML"
+    "message": "XML to PDF and offer generation, fully local in your browser"
   },
   "privacyNoteHtml": {
-    "message": "The app runs entirely in your browser - your data never leaves your computer.<br/><b>PDF invoices are <u>not</u> legal documents.</b>"
+    "message": "The app runs entirely in your browser, your data never leaves your device.<br/><b>PDF invoices and PDF offers are not legal documents.</b>"
+  },
+  "tabXml2Pdf": {
+    "message": "XML2PDF"
+  },
+  "tabOffers": {
+    "message": "Offers"
   },
   "settingsButton": {
     "message": "Settings"
@@ -36,13 +45,13 @@
     "message": "Theme"
   },
   "settingLanguage": {
-    "message": "Jezik"
+    "message": "App language"
   },
   "settingPdfLanguage": {
-    "message": "PDF language"
+    "message": "Invoice PDF language"
   },
   "settingRetention": {
-    "message": "Keep PDF and XML in browser on this device"
+    "message": "Keep PDF/XML in browser on this device"
   },
   "retentionDays": {
     "message": "$1 "
@@ -57,10 +66,13 @@
     "message": "0 (cleared on close)"
   },
   "settingPdfColor": {
-    "message": "PDF accent color"
+    "message": "Color"
   },
   "settingPdfLogo": {
-    "message": "PDF logo"
+    "message": "Logo"
+  },
+  "settingPdfScopeNote": {
+    "message": "Applies to invoices and offers."
   },
   "pdfLogoUpload": {
     "message": "Upload logo"
@@ -70,6 +82,42 @@
   },
   "pdfLogoRemove": {
     "message": "Remove"
+  },
+  "offerSettingIssuerName": {
+    "message": "Issuer company name"
+  },
+  "offerSettingIssuerAddress": {
+    "message": "Issuer address"
+  },
+  "offerSettingIssuerCity": {
+    "message": "Postal code and city"
+  },
+  "offerSettingIssuerOib": {
+    "message": "Issuer tax ID (OIB)"
+  },
+  "offerSettingIssuerIban": {
+    "message": "IBAN"
+  },
+  "offerSettingIssuerContact": {
+    "message": "Contact person"
+  },
+  "offerSettingIssuerEmail": {
+    "message": "Email"
+  },
+  "offerSettingIssuerWeb": {
+    "message": "Website"
+  },
+  "offerSettingNumberPrefix": {
+    "message": "Offer number prefix (optional)"
+  },
+  "offerSettingDefaultVat": {
+    "message": "Default VAT rate (%)"
+  },
+  "offerSettingValidityDays": {
+    "message": "Default validity (days)"
+  },
+  "offerSettingDefaultNote": {
+    "message": "Default note"
   },
   "languageCroatian": {
     "message": "Hrvatski"
@@ -114,13 +162,13 @@
     "message": "Remove file"
   },
   "noticeInvalidXml": {
-    "message": "Skipped $1 file(s): not valid e-Račun XML."
+    "message": "Skipped $1 file(s): not valid e-racun XML."
   },
   "noticeDuplicateSkipped": {
     "message": "Skipped $1 duplicate file(s) (identical file + settings already exist)."
   },
   "noticeZipNoValid": {
-    "message": "ZIP \"$1\": no valid e-Račun XML files found."
+    "message": "ZIP \"$1\": no valid e-racun XML files found."
   },
   "noticeZipSummary": {
     "message": "ZIP \"$1\": valid XMLs $2, converted $3, skipped $4 (already exists)."
@@ -138,7 +186,7 @@
     "message": "Close preview"
   },
   "legendColor": {
-    "message": "Accent"
+    "message": "Color"
   },
   "legendLogo": {
     "message": "Logo"
@@ -186,7 +234,7 @@
     "message": "Download"
   },
   "errorProcessingFile": {
-    "message": "Error processing: $1"
+    "message": "Processing error: $1"
   },
   "errorFileNotFound": {
     "message": "Error: File not found in memory."
@@ -270,6 +318,297 @@
     "message": "Note:"
   },
   "pdfLegalNotice": {
-    "message": "This document is not a legal document. The PDF is generated automatically from the e-Ra\u010dun XML."
+    "message": "This document is not a legal document. The PDF is generated automatically from e-racun XML."
+  },
+  "offersTitle": {
+    "message": "Offer generator"
+  },
+  "offersSubtitle": {
+    "message": "Create professional offers, preview PDF instantly, and download in one click."
+  },
+  "offerSettingsIssuerTitle": {
+    "message": "Issuers"
+  },
+  "offerSettingsDefaultsTitle": {
+    "message": "Offer defaults"
+  },
+  "offerIssuerAdd": {
+    "message": "New"
+  },
+  "offerIssuerEdit": {
+    "message": "Edit"
+  },
+  "offerIssuerSave": {
+    "message": "Save"
+  },
+  "offerIssuerCancel": {
+    "message": "Cancel"
+  },
+  "offerIssuerRemove": {
+    "message": "Remove issuer"
+  },
+  "offerIssuerNoneSelected": {
+    "message": "No issuer selected."
+  },
+  "offerIssuerNoneAvailable": {
+    "message": "No saved issuers"
+  },
+  "offerIssuerSelectFirst": {
+    "message": "Select an issuer first."
+  },
+  "offerIssuerEditorTitleNew": {
+    "message": "New issuer"
+  },
+  "offerIssuerEditorTitleEdit": {
+    "message": "Edit issuer"
+  },
+  "offerIssuerModeImport": {
+    "message": "Import XML"
+  },
+  "offerIssuerModeManual": {
+    "message": "Manual entry"
+  },
+  "offerIssuerSourceManualShort": {
+    "message": "MAN"
+  },
+  "offerIssuerSourceXmlShort": {
+    "message": "XML"
+  },
+  "offerImportIssuer": {
+    "message": "Import issuer from e-invoice XML"
+  },
+  "offerImportHint": {
+    "message": "Upload one e-invoice XML to autofill issuer company details."
+  },
+  "offerMetaSection": {
+    "message": "Metadata"
+  },
+  "offerHeaderSection": {
+    "message": "Offer header"
+  },
+  "offerChangeInSettings": {
+    "message": "Change in settings"
+  },
+  "offerNumberLabel": {
+    "message": "Offer number"
+  },
+  "offerIssueDateLabel": {
+    "message": "Issue date"
+  },
+  "offerValidUntilLabel": {
+    "message": "Valid until"
+  },
+  "offerIssuerSection": {
+    "message": "Issuer"
+  },
+  "offerCustomerSection": {
+    "message": "Customer"
+  },
+  "offerCustomerNameLabel": {
+    "message": "Customer name"
+  },
+  "offerCustomerAddressLabel": {
+    "message": "Customer address"
+  },
+  "offerCustomerOibLabel": {
+    "message": "Customer tax ID (OIB)"
+  },
+  "offerContentSection": {
+    "message": "Offer content"
+  },
+  "offerIntroLabel": {
+    "message": "Intro"
+  },
+  "offerSpecificationLabel": {
+    "message": "Service specification"
+  },
+  "offerNoteLabel": {
+    "message": "Scope and extra-work note"
+  },
+  "offerItemsSection": {
+    "message": "Offer line items"
+  },
+  "offerItemDescription": {
+    "message": "Description"
+  },
+  "offerItemQty": {
+    "message": "Qty"
+  },
+  "offerItemUnit": {
+    "message": "Unit"
+  },
+  "offerItemUnitPrice": {
+    "message": "Unit price"
+  },
+  "offerItemDiscount": {
+    "message": "Discount"
+  },
+  "offerItemTotal": {
+    "message": "Total"
+  },
+  "offerItemDescriptionPlaceholder": {
+    "message": "Line item or phase description"
+  },
+  "offerItemUnitPlaceholder": {
+    "message": "h, pcs, mo."
+  },
+  "offerItemRemove": {
+    "message": "Remove item"
+  },
+  "offerAddItem": {
+    "message": "Add item"
+  },
+  "offerSummarySection": {
+    "message": "Financial summary"
+  },
+  "offerDiscountLabel": {
+    "message": "Discount (%)"
+  },
+  "offerVatRateLabel": {
+    "message": "VAT (%)"
+  },
+  "offerSummaryStandard": {
+    "message": "Standard price"
+  },
+  "offerSummaryDiscount": {
+    "message": "Discount"
+  },
+  "offerSummaryNet": {
+    "message": "Net base"
+  },
+  "offerSummaryVat": {
+    "message": "VAT"
+  },
+  "offerSummaryTotal": {
+    "message": "Total to pay"
+  },
+  "offerGeneratePdf": {
+    "message": "Generate offer PDF"
+  },
+  "offerResetForm": {
+    "message": "Reset form"
+  },
+  "offerClearGenerated": {
+    "message": "Clear generated"
+  },
+  "offerGeneratedTitle": {
+    "message": "Generated offers"
+  },
+  "offerPreviewPdf": {
+    "message": "Preview"
+  },
+  "offerDownloadPdf": {
+    "message": "Download"
+  },
+  "offerLabelValidUntil": {
+    "message": "Valid until"
+  },
+  "offerBuyerRemove": {
+    "message": "Remove buyer from autofill"
+  },
+  "offerImportConfirmTitle": {
+    "message": "Confirm issuer import"
+  },
+  "offerImportConfirmMessage": {
+    "message": "We found the issuer details below in the XML. Confirm to apply them to offer settings and form."
+  },
+  "offerImportConfirmCancel": {
+    "message": "Cancel"
+  },
+  "offerImportConfirmApply": {
+    "message": "Apply data"
+  },
+  "offerErrorGeneratorUnavailable": {
+    "message": "Offer generator is currently unavailable."
+  },
+  "offerErrorIssuerNameRequired": {
+    "message": "Issuer company name is required."
+  },
+  "offerErrorCustomerNameRequired": {
+    "message": "Customer name is required."
+  },
+  "offerErrorNoItems": {
+    "message": "Add at least one offer line item."
+  },
+  "offerErrorGenerationFailed": {
+    "message": "Failed to generate offer PDF."
+  },
+  "offerErrorBlobMissing": {
+    "message": "Offer PDF is no longer available in memory."
+  },
+  "offerErrorInvalidXml": {
+    "message": "Provided file is not a valid e-invoice XML."
+  },
+  "offerErrorImportNoIssuerData": {
+    "message": "No issuer details were found in the XML."
+  },
+  "offerPdfTitle": {
+    "message": "OFFER"
+  },
+  "offerPdfIssuerLabel": {
+    "message": "ISSUER"
+  },
+  "offerPdfCustomerLabel": {
+    "message": "CUSTOMER"
+  },
+  "offerPdfMetaNumber": {
+    "message": "Offer number"
+  },
+  "offerPdfMetaIssueDate": {
+    "message": "Issue date"
+  },
+  "offerPdfMetaValidUntil": {
+    "message": "Valid until"
+  },
+  "offerPdfIntroLabel": {
+    "message": "Intro"
+  },
+  "offerPdfSpecificationLabel": {
+    "message": "Specification"
+  },
+  "offerPdfTableNo": {
+    "message": "#"
+  },
+  "offerPdfTableDescription": {
+    "message": "Description"
+  },
+  "offerPdfTableQuantity": {
+    "message": "Qty"
+  },
+  "offerPdfTableUnitPrice": {
+    "message": "Unit price"
+  },
+  "offerPdfTableDiscount": {
+    "message": "Discount"
+  },
+  "offerPdfTableTotal": {
+    "message": "Total"
+  },
+  "offerPdfNoteLabel": {
+    "message": "Note"
+  },
+  "modalClose": {
+    "message": "Close"
+  },
+  "offerImportConfirmClose": {
+    "message": "Close import confirmation"
+  },
+  "confirmActionRepeat": {
+    "message": "Click again to confirm"
+  },
+  "offerGenerating": {
+    "message": "Generating..."
+  },
+  "offerGeneratedSuccess": {
+    "message": "Offer generated."
+  },
+  "saving": {
+    "message": "Saving..."
+  },
+  "offerIssuerHasReferences": {
+    "message": "Existing offers still reference this issuer."
+  },
+  "offerDetailsSection": {
+    "message": "Offer details"
   }
 }

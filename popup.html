@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,57 @@
             --border: #d8dee6;
             --success: #1a9a68;
             --hover: #edf1f6;
+
+            /* Status */
+            --danger: #dc2626;
+            --danger-hover: #b91c1c;
+            --danger-fg: #ffffff;
+            --warn: #d97706;
+            --warn-hover: #b45309;
+            --info: var(--primary);
+
+            /* Spacing — 4px base */
+            --space-0: 0;
+            --space-1: 2px;
+            --space-2: 4px;
+            --space-3: 6px;
+            --space-4: 8px;
+            --space-5: 10px;
+            --space-6: 12px;
+            --space-7: 16px;
+            --space-8: 20px;
+            --space-9: 24px;
+            --space-10: 32px;
+
+            /* Radius */
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+            --radius-pill: 999px;
+
+            /* Shadows + scrim */
+            --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 10px 24px rgba(15, 23, 42, 0.12);
+            --shadow-overlay: 0 24px 60px rgba(15, 23, 42, 0.32);
+            --scrim: rgba(15, 23, 42, 0.35);
+
+            /* Typography */
+            --fs-label: 11px;
+            --fs-body: 12px;
+            --fs-value: 12px;
+            --fs-title: 13px;
+            --fs-h: 15px;
+            --fw-regular: 500;
+            --fw-strong: 600;
+            --fw-bold: 700;
+
+            /* Motion */
+            --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+            --ease-out-strong: cubic-bezier(0.16, 1, 0.3, 1);
+            --dur-fast: 120ms;
+            --dur-base: 220ms;
+            --dur-slow: 320ms;
         }
 
         :root[data-theme="dark"] {
@@ -28,6 +79,18 @@
             --border: #2b3a4b;
             --hover: #223141;
             --success: #2fb07a;
+
+            --danger: #f87171;
+            --danger-hover: #ef4444;
+            --danger-fg: #1a0a0c;
+            --warn: #fbbf24;
+            --warn-hover: #f59e0b;
+
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+            --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.45);
+            --shadow-overlay: 0 28px 70px rgba(0, 0, 0, 0.6);
+            --scrim: rgba(0, 0, 0, 0.55);
         }
 
         * {
@@ -99,15 +162,93 @@
             line-height: 1.4;
         }
 
+        .top-tabs {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px;
+            margin-bottom: 12px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            transition: opacity 0.22s ease, transform 0.22s ease, max-height 0.24s ease, margin 0.22s ease;
+        }
+
+        .tab-btn {
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--text-light);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: transparent;
+        }
+
+        .tab-view {
+            display: none;
+            transition: opacity 0.22s ease, transform 0.22s ease;
+        }
+
+        .tab-view.active {
+            display: block;
+        }
+
+        .main-content-shell {
+            transition: opacity 0.22s ease, transform 0.22s ease, max-height 0.24s ease;
+            max-height: 4000px;
+            opacity: 1;
+            transform: translateY(0);
+            overflow: hidden;
+        }
+
+        body.settings-open .main-content-shell {
+            opacity: 0;
+            transform: translateY(8px);
+            pointer-events: none;
+            max-height: 0;
+        }
+
         .setting-group-title {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 700;
             color: var(--text-light);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 24px 0 8px 0;
+            letter-spacing: 0.55px;
+            margin: 18px 0 8px 0;
         }
-        .setting-group-title:first-child { margin-top: 4px; }
+        .setting-group-title:first-child { margin-top: 2px; }
+
+        .setting-group-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 18px 0 8px 0;
+        }
+
+        .setting-group-head .setting-group-title {
+            margin: 0;
+        }
+
+        .setting-group-note {
+            font-size: 11px;
+            color: var(--text-light);
+            text-align: right;
+            line-height: 1.35;
+        }
 
         .settings-panel {
             background: var(--surface);
@@ -118,17 +259,21 @@
             opacity: 0;
             transform: translateY(-8px);
             transition: max-height 0.25s ease, opacity 0.25s ease, transform 0.25s ease, padding 0.25s ease;
-            padding: 0 12px;
+            padding: 0 14px;
             margin-bottom: 0;
             pointer-events: none;
         }
         .settings-panel.open {
-            max-height: 520px;
+            max-height: calc(100vh - 132px);
             opacity: 1;
             transform: translateY(0);
-            padding: 12px;
-            margin-bottom: 12px;
+            padding: 2px 0 10px;
+            margin-bottom: 0;
             pointer-events: auto;
+            overflow-y: auto;
+            background: transparent;
+            border: none;
+            border-radius: 0;
         }
 
         .setting-item {
@@ -136,7 +281,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 12px;
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--border);
         }
         .setting-item:last-child { border-bottom: none; }
@@ -152,12 +297,12 @@
             color: var(--text);
             font-size: 11px;
             font-weight: 600;
-            padding: 4px 10px;
+            padding: 6px 11px;
             border-radius: 999px;
             cursor: pointer;
             transition: background 0.2s, border 0.2s, color 0.2s;
-            min-width: fit-content;
-            width: 120px;
+            min-width: 108px;
+            width: auto;
             text-align: center;
         }
         .toggle-pill:hover { border-color: var(--primary); }
@@ -169,6 +314,17 @@
         .setting-stack {
             flex-direction: column;
             align-items: stretch;
+        }
+
+        .setting-plain {
+            border-bottom: none;
+            padding-top: 2px;
+        }
+
+        .setting-column {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 6px;
         }
 
         .setting-head {
@@ -184,6 +340,34 @@
             color: var(--text-light);
         }
 
+        .text-input,
+        .textarea-input,
+        .number-input,
+        .date-input {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            color: var(--text);
+            padding: 9px 10px;
+            font-size: 12px;
+            font-family: inherit;
+        }
+
+        .text-input:focus,
+        .textarea-input:focus,
+        .number-input:focus,
+        .date-input:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 1px;
+            border-color: var(--primary);
+        }
+
+        .textarea-input {
+            resize: vertical;
+            min-height: 74px;
+        }
+
         .range-input {
             width: 100%;
             accent-color: var(--primary);
@@ -196,7 +380,7 @@
             border-radius: 6px;
             background: var(--surface);
             padding: 0;
-            width: 120px;
+            width: 112px;
         }
 
         .logo-controls {
@@ -489,6 +673,851 @@
             color: var(--text-light);
         }
 
+        .offers-shell {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .offers-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .offers-generated-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 8;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .offers-generated-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .offer-parties-section {
+            background: transparent;
+            border: none;
+            padding: 0;
+            border-radius: 0;
+        }
+        .offer-parties-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: var(--space-5);
+            align-items: start;
+        }
+        .offer-party {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            min-width: 0;
+        }
+        .offer-party-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: var(--space-3);
+            min-width: 0;
+        }
+        .offer-party-label {
+            font-size: 10px;
+            font-weight: var(--fw-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-light);
+        }
+        .offer-party .issuer-pill {
+            min-width: 0;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+        .offer-buyer-card {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            padding: var(--space-4) var(--space-5);
+        }
+        .offer-buyer-card .offer-field { gap: var(--space-1); min-width: 0; }
+        .offer-buyer-card label {
+            font-size: 10px;
+            font-weight: var(--fw-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: var(--text-light);
+        }
+        .offer-buyer-card .text-input {
+            padding: 6px 8px;
+            font-size: var(--fs-label);
+        }
+
+        .offer-meta-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
+            gap: var(--space-5);
+        }
+
+        .offer-details-text {
+            margin-top: var(--space-5);
+        }
+
+        .settings-link-btn {
+            border: none;
+            background: transparent;
+            color: var(--text-light);
+            font-size: 11px;
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            padding: 0;
+        }
+
+        .settings-link-btn:hover {
+            color: var(--primary);
+        }
+
+        .offer-collapsible {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .offer-section-toggle {
+            width: 100%;
+            border: none;
+            background: transparent;
+            text-align: left;
+            padding: 11px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .offer-section-toggle:hover {
+            background: var(--hover);
+        }
+
+        .offer-section-toggle:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: -2px;
+        }
+
+        .offer-section-toggle .section-title {
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .offer-section-excerpt {
+            flex: 1;
+            min-width: 0;
+            font-size: 11px;
+            color: var(--text-light);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .offer-section-chevron {
+            margin-left: auto;
+            color: var(--text-light);
+            font-size: 11px;
+            transition: transform 0.18s ease;
+        }
+
+        .offer-collapsible:not(.is-collapsed) .offer-section-chevron {
+            transform: rotate(180deg);
+        }
+
+        .offer-section-body {
+            border-top: 1px solid var(--border);
+            padding: 10px 12px 12px;
+        }
+
+        .offer-collapsible.is-collapsed .offer-section-body {
+            display: none;
+        }
+
+        .offers-header {
+            margin-bottom: 10px;
+        }
+
+        .offers-title {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .offers-subtitle {
+            margin: 3px 0 0;
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        .offer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-5);
+        }
+
+        .offer-grid-single {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-5);
+        }
+
+        .offer-grid > .offer-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .offer-field {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .offer-field label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .offer-items-table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .offer-items-table .col-desc { width: 26%; }
+        .offer-items-table .col-qty { width: 11%; }
+        .offer-items-table .col-unit { width: 10%; }
+        .offer-items-table .col-price { width: 14%; }
+        .offer-items-table .col-discount { width: 17%; }
+        .offer-items-table .col-total { width: 14%; }
+        .offer-items-table .col-actions { width: 8%; min-width: 36px; }
+
+        .offer-items-table th,
+        .offer-items-table td {
+            border-bottom: 1px solid var(--border);
+            padding: var(--space-3) var(--space-4);
+            font-size: var(--fs-label);
+            vertical-align: middle;
+            background: var(--surface);
+        }
+
+        .offer-items-table thead th {
+            background: var(--hover);
+            color: var(--text-light);
+            font-weight: var(--fw-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            font-size: 10px;
+        }
+
+        .offer-items-table th.th-num,
+        .offer-items-table td.td-num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .offer-items-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .offer-items-table .text-input,
+        .offer-items-table .number-input {
+            padding: 7px 8px;
+            font-size: var(--fs-label);
+        }
+
+        .offer-items-table td.td-num .number-input {
+            text-align: right;
+        }
+
+        .offer-items-table .number-input::-webkit-inner-spin-button,
+        .offer-items-table .number-input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .offer-items-table .number-input {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        .offer-items-table .range-input {
+            margin: 0;
+        }
+
+        .item-discount-stack {
+            display: grid;
+            gap: 3px;
+        }
+
+        .item-discount-value {
+            font-size: 10px;
+            color: var(--text-light);
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .file-item.flash-new {
+            animation: offerFlash 1.6s ease;
+        }
+
+        @keyframes offerFlash {
+            0% {
+                background: color-mix(in srgb, var(--primary) 20%, var(--surface));
+                box-shadow: inset 2px 0 0 var(--primary);
+            }
+            100% {
+                background: var(--surface);
+                box-shadow: inset 0 0 0 transparent;
+            }
+        }
+
+        .offer-actions-inline {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .offer-actions-inline .btn {
+            width: auto;
+            margin-top: 0;
+        }
+
+        .offer-footer-actions {
+            display: flex;
+            gap: var(--space-4);
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: var(--space-5);
+        }
+
+        .offer-footer-actions-summary {
+            margin-top: var(--space-6);
+        }
+
+        .offer-footer-actions .btn {
+            margin-top: 0;
+            width: auto;
+        }
+
+        .summary-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .summary-row strong {
+            font-size: 13px;
+        }
+
+        .summary-row .summary-label {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .offer-import-note {
+            font-size: 10px;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        .offer-settings-shell {
+            display: grid;
+            gap: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: color-mix(in srgb, var(--surface) 82%, var(--hover));
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .offer-settings-row {
+            display: grid;
+            gap: 7px;
+        }
+
+        .offer-issuer-toolbar {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto auto auto;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .issuer-select-wrap {
+            min-width: 0;
+        }
+
+        .issuer-select-wrap select {
+            width: 100%;
+            min-height: 34px;
+        }
+
+        .offer-issuer-toolbar .toggle-pill {
+            width: auto;
+            min-width: 0;
+            padding: 5px 9px;
+            font-size: 10px;
+        }
+
+        .offer-defaults-title {
+            margin-top: 4px;
+            margin-bottom: 2px;
+        }
+
+        .icon-pill-btn {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-light);
+            border-radius: 999px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+
+        .icon-pill-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--hover);
+        }
+
+        .issuer-pill {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 8px 10px;
+            font-size: 11px;
+            color: var(--text-light);
+            display: grid;
+            gap: 4px;
+        }
+
+        .issuer-pill-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text);
+            font-weight: 700;
+            min-width: 0;
+        }
+
+        .source-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            padding: 2px 6px;
+        }
+
+        .source-badge.manual {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            background: color-mix(in srgb, var(--primary) 12%, transparent);
+        }
+
+        .source-badge.xml {
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            background: var(--hover);
+        }
+
+        .issuer-chip-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .issuer-chip {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 999px;
+            padding: 3px 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            max-width: 100%;
+        }
+
+        .issuer-chip.current {
+            border-color: var(--primary);
+        }
+
+        .issuer-chip-main {
+            border: none;
+            background: transparent;
+            color: var(--text);
+            font-size: 10px;
+            font-weight: 600;
+            max-width: 220px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        .issuer-chip-remove {
+            border: none;
+            background: transparent;
+            color: var(--text-light);
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .issuer-chip-remove:hover {
+            color: #ffffff;
+            background: var(--primary);
+        }
+
+        .issuer-editor {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 10px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .issuer-editor.is-hidden {
+            display: none;
+        }
+
+        .issuer-editor-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .issuer-editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .issuer-mode-switch {
+            display: inline-flex;
+            gap: 6px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .issuer-mode-switch .toggle-pill {
+            width: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .issuer-mode-switch .toggle-pill.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        .issuer-create-import {
+            border: 1px dashed var(--border);
+            border-radius: 10px;
+            padding: 10px;
+            display: grid;
+            gap: 6px;
+            background: color-mix(in srgb, var(--surface) 88%, var(--hover));
+        }
+
+        .issuer-create-import.is-hidden,
+        .issuer-editor-grid.is-hidden,
+        .issuer-editor-actions.is-hidden {
+            display: none;
+        }
+
+        .issuer-editor-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .issuer-editor-actions .btn {
+            width: auto;
+            margin-top: 0;
+        }
+
+        .issuer-editor-grid .offer-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .offer-defaults-grid {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .offer-defaults-grid .offer-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .range-stack {
+            display: grid;
+            gap: 4px;
+        }
+
+        .range-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            font-size: 10px;
+            color: var(--text-light);
+        }
+
+        .range-value {
+            font-weight: 700;
+            color: var(--primary);
+            font-variant-numeric: tabular-nums;
+            min-width: 44px;
+            text-align: right;
+        }
+
+        .is-hidden {
+            display: none !important;
+        }
+
+        /* ----- Shared component states ----- */
+
+        .btn-small-muted {
+            color: var(--text-light);
+        }
+
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-light);
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            font-size: 11px;
+            transition: background var(--dur-fast) var(--ease-out),
+                        border-color var(--dur-fast) var(--ease-out),
+                        color var(--dur-fast) var(--ease-out);
+            padding: 0;
+        }
+        .btn-icon:hover { background: var(--hover); }
+        .btn-icon:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+        .btn-icon.btn-icon-danger:hover,
+        .btn-icon.btn-icon-danger:focus-visible {
+            background: var(--danger);
+            border-color: var(--danger);
+            color: var(--danger-fg);
+        }
+
+        .is-busy {
+            opacity: 0.75;
+            cursor: progress !important;
+            pointer-events: none;
+        }
+
+        .is-confirming {
+            background: var(--danger) !important;
+            border-color: var(--danger) !important;
+            color: var(--danger-fg) !important;
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 25%, transparent);
+            transition: background var(--dur-fast) var(--ease-out),
+                        box-shadow var(--dur-fast) var(--ease-out),
+                        border-color var(--dur-fast) var(--ease-out),
+                        color var(--dur-fast) var(--ease-out);
+        }
+        .is-confirming i { color: var(--danger-fg); }
+
+        .field-error {
+            display: none;
+            color: var(--danger);
+            font-size: var(--fs-label);
+            line-height: 1.35;
+            margin-top: var(--space-2);
+        }
+        .offer-field.has-error .field-error { display: block; }
+        .offer-field.has-error .text-input,
+        .offer-field.has-error .number-input,
+        .offer-field.has-error .date-input,
+        .offer-field.has-error .textarea-input,
+        .offer-field.has-error select { border-color: var(--danger); }
+        .offer-field.has-error label { color: var(--danger); }
+
+        .autocomplete-panel [role="option"].is-active,
+        .autocomplete-panel .buyer-suggestion.is-active { background: var(--hover); }
+
+        body.has-modal { overflow: hidden; }
+
+        .compact-card {
+            padding: 10px;
+        }
+
+        .autocomplete-wrap {
+            position: relative;
+        }
+
+        .autocomplete-panel {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: calc(100% + 4px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+            box-shadow: var(--shadow-md);
+            z-index: 40;
+            max-height: 180px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .autocomplete-panel.open {
+            display: block;
+        }
+
+        .buyer-suggestion {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .buyer-suggestion:last-child {
+            border-bottom: none;
+        }
+
+        .buyer-suggestion-main {
+            border: none;
+            background: transparent;
+            text-align: left;
+            font-size: 11px;
+            color: var(--text);
+            cursor: pointer;
+            min-width: 0;
+            padding: 0;
+        }
+
+        .buyer-suggestion-main .sub {
+            display: block;
+            font-size: 10px;
+            color: var(--text-light);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .buyer-suggestion-remove {
+            border: none;
+            background: transparent;
+            color: var(--text-light);
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .buyer-suggestion-remove:hover {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .import-list {
+            margin: 8px 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 6px;
+        }
+
+        .import-row {
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 4px;
+        }
+
+        .import-key {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .import-value {
+            text-align: right;
+            word-break: break-word;
+        }
+
+        .import-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+            margin-top: 12px;
+        }
+
+        .import-actions .btn {
+            width: auto;
+            margin-top: 0;
+        }
+
         .footer {
             margin-top: 24px;
             text-align: center;
@@ -496,19 +1525,40 @@
             color: var(--text-light);
             border-top: 1px solid var(--border);
             padding-top: 12px;
+            transition: opacity 0.22s ease, max-height 0.24s ease, margin 0.22s ease, padding 0.22s ease;
+            max-height: 80px;
+            overflow: hidden;
         }
 
         .footer a { color: var(--text-light); text-decoration: none; font-weight: 500; }
         .footer a:hover { color: var(--primary); }
 
+        body.settings-open .footer {
+            opacity: 0;
+            max-height: 0;
+            margin-top: 0;
+            padding-top: 0;
+            border-top-width: 0;
+            pointer-events: none;
+        }
+
         .error-toast {
             position: fixed;
-            bottom: 16px; left: 16px; right: 16px;
-            background: #ef4444; color: white; padding: 10px;
-            border-radius: 8px; font-size: 12px; display: none;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            bottom: var(--space-7);
+            left: var(--space-7);
+            right: var(--space-7);
+            padding: var(--space-5) var(--space-7);
+            background: var(--danger);
+            color: var(--danger-fg);
+            border-radius: var(--radius-md);
+            font-size: var(--fs-body);
+            display: none;
+            box-shadow: var(--shadow-lg);
             z-index: 100;
         }
+        .error-toast.is-info { background: var(--primary); color: #fff; }
+        .error-toast.is-success { background: var(--success); color: #fff; }
+        .error-toast.is-warn { background: var(--warn); color: #1f2a37; }
 
         .preview-overlay {
             position: fixed;
@@ -517,7 +1567,7 @@
             align-items: center;
             justify-content: center;
             padding: 16px;
-            background: rgba(15, 23, 42, 0.35);
+            background: var(--scrim);
             backdrop-filter: blur(6px);
             z-index: 200;
         }
@@ -526,29 +1576,22 @@
         .preview-card {
             width: min(92vw, 880px);
             max-height: 90vh;
-            background: rgba(255, 255, 255, 0.92);
+            background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-overlay);
             display: flex;
             flex-direction: column;
             overflow: hidden;
             animation: previewLift 0.2s ease;
         }
-        :root[data-theme="dark"] .preview-card {
-            background: rgba(15, 23, 42, 0.92);
-        }
-
         .preview-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 12px;
+            padding: var(--space-5) var(--space-6);
             border-bottom: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.35);
-        }
-        :root[data-theme="dark"] .preview-header {
-            background: rgba(15, 23, 42, 0.35);
+            background: color-mix(in srgb, var(--surface) 85%, transparent);
         }
 
         .preview-title {
@@ -584,6 +1627,42 @@
             border: none;
             border-radius: 10px;
             background: var(--bg);
+        }
+
+        @media (max-width: 620px) {
+            body {
+                min-width: 360px;
+            }
+
+            .offer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .issuer-editor-grid,
+            .offer-defaults-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .offer-parties-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .offer-meta-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .offer-issuer-toolbar {
+                grid-template-columns: 1fr auto auto auto;
+            }
+
+            .offer-footer-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .offer-footer-actions .btn {
+                width: 100%;
+            }
         }
 
         @keyframes previewFade {
@@ -635,7 +1714,10 @@
             <button type="button" class="toggle-pill" id="ui-language-toggle"></button>
         </div>
 
-        <div class="setting-group-title" data-i18n="groupPdf"></div>
+        <div class="setting-group-head">
+            <div class="setting-group-title" data-i18n="groupPdf"></div>
+            <div class="setting-group-note" data-i18n="settingPdfScopeNote"></div>
+        </div>
         <div class="setting-item">
             <div class="setting-label" data-i18n="settingPdfLanguage"></div>
             <button type="button" class="toggle-pill" id="pdf-language-toggle"></button>
@@ -655,8 +1737,6 @@
             </div>
             <input type="file" id="pdf-logo-input" accept="image/*">
         </div>
-
-        <div class="setting-group-title" data-i18n="groupStorage"></div>
         <div class="setting-item setting-stack">
             <div class="setting-head">
                 <div class="setting-label" data-i18n="settingRetention"></div>
@@ -664,40 +1744,334 @@
             </div>
             <input type="range" id="retention-range" class="range-input" min="0" max="32" step="1">
         </div>
+
+        <div class="setting-group-title" data-i18n="groupOffers"></div>
+        <div class="offer-settings-shell">
+            <div class="offer-settings-row">
+                <div class="setting-label" data-i18n="offerSettingsIssuerTitle"></div>
+                <div class="offer-issuer-toolbar">
+                    <div class="issuer-select-wrap">
+                        <select id="offer-issuer-select" class="text-input"></select>
+                    </div>
+                    <button id="offer-issuer-new-btn" type="button" class="toggle-pill" data-i18n="offerIssuerAdd"></button>
+                    <button id="offer-issuer-edit-btn" type="button" class="toggle-pill" data-i18n="offerIssuerEdit"></button>
+                    <button id="offer-issuer-remove-btn" type="button" class="icon-pill-btn" data-i18n-attr="title:offerIssuerRemove,aria-label:offerIssuerRemove">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div id="offer-selected-issuer-pill" class="issuer-pill" data-i18n="offerIssuerNoneSelected"></div>
+                <div id="offer-issuer-chip-list" class="issuer-chip-list"></div>
+            </div>
+
+            <div id="offer-issuer-editor" class="issuer-editor is-hidden">
+                <div class="issuer-editor-header">
+                    <div id="offer-issuer-editor-title" class="setting-label" data-i18n="offerIssuerEditorTitleNew"></div>
+                    <div id="offer-issuer-mode-switch" class="issuer-mode-switch">
+                        <button id="offer-issuer-mode-import-btn" type="button" class="toggle-pill" data-i18n="offerIssuerModeImport"></button>
+                        <button id="offer-issuer-mode-manual-btn" type="button" class="toggle-pill" data-i18n="offerIssuerModeManual"></button>
+                    </div>
+                </div>
+                <div id="offer-issuer-create-import" class="issuer-create-import">
+                    <div class="offer-actions-inline">
+                        <button id="offer-import-issuer-btn" class="btn btn-outline" type="button">
+                            <i class="fas fa-file-import" aria-hidden="true"></i>
+                            <span data-i18n="offerImportIssuer"></span>
+                        </button>
+                        <input type="file" id="offer-import-xml-input" accept=".xml,application/xml,text/xml">
+                    </div>
+                    <div class="offer-import-note" data-i18n="offerImportHint"></div>
+                </div>
+                <div id="offer-issuer-editor-grid" class="issuer-editor-grid">
+                    <div class="offer-field full">
+                        <label for="offer-issuer-field-name" data-i18n="offerSettingIssuerName"></label>
+                        <input id="offer-issuer-field-name" type="text" class="text-input">
+                    </div>
+                    <div class="offer-field full">
+                        <label for="offer-issuer-field-address" data-i18n="offerSettingIssuerAddress"></label>
+                        <input id="offer-issuer-field-address" type="text" class="text-input">
+                    </div>
+                    <div class="offer-field">
+                        <label for="offer-issuer-field-city" data-i18n="offerSettingIssuerCity"></label>
+                        <input id="offer-issuer-field-city" type="text" class="text-input">
+                    </div>
+                    <div class="offer-field">
+                        <label for="offer-issuer-field-oib" data-i18n="offerSettingIssuerOib"></label>
+                        <input id="offer-issuer-field-oib" type="text" class="text-input">
+                    </div>
+                    <div class="offer-field">
+                        <label for="offer-issuer-field-iban" data-i18n="offerSettingIssuerIban"></label>
+                        <input id="offer-issuer-field-iban" type="text" class="text-input">
+                    </div>
+                    <div class="offer-field">
+                        <label for="offer-issuer-field-contact" data-i18n="offerSettingIssuerContact"></label>
+                        <input id="offer-issuer-field-contact" type="text" class="text-input">
+                    </div>
+                    <div class="offer-field">
+                        <label for="offer-issuer-field-email" data-i18n="offerSettingIssuerEmail"></label>
+                        <input id="offer-issuer-field-email" type="text" class="text-input">
+                    </div>
+                    <div class="offer-field">
+                        <label for="offer-issuer-field-web" data-i18n="offerSettingIssuerWeb"></label>
+                        <input id="offer-issuer-field-web" type="text" class="text-input">
+                    </div>
+                </div>
+                <div id="offer-issuer-editor-actions" class="issuer-editor-actions">
+                    <button id="offer-issuer-save-btn" class="btn" type="button" data-i18n="offerIssuerSave"></button>
+                    <button id="offer-issuer-cancel-btn" class="btn btn-outline" type="button" data-i18n="offerIssuerCancel"></button>
+                </div>
+            </div>
+
+            <div class="setting-label offer-defaults-title" data-i18n="offerSettingsDefaultsTitle"></div>
+            <div class="offer-defaults-grid">
+                <div class="offer-field">
+                    <label for="offer-setting-number-prefix" data-i18n="offerSettingNumberPrefix"></label>
+                    <input type="text" id="offer-setting-number-prefix" class="text-input">
+                </div>
+                <div class="offer-field full">
+                    <label for="offer-setting-default-note" data-i18n="offerSettingDefaultNote"></label>
+                    <textarea id="offer-setting-default-note" class="textarea-input"></textarea>
+                </div>
+                <div class="offer-field range-stack">
+                    <label for="offer-setting-default-vat-slider" data-i18n="offerSettingDefaultVat"></label>
+                    <div class="range-row">
+                        <input type="range" id="offer-setting-default-vat-slider" class="range-input" min="0" max="25" step="1">
+                        <span id="offer-setting-default-vat-value" class="range-value">25%</span>
+                    </div>
+                </div>
+                <div class="offer-field range-stack">
+                    <label for="offer-setting-validity-days-slider" data-i18n="offerSettingValidityDays"></label>
+                    <div class="range-row">
+                        <input type="range" id="offer-setting-validity-days-slider" class="range-input" min="1" max="30" step="1">
+                        <span id="offer-setting-validity-days-value" class="range-value">15</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <div id="main-view">
-        <div id="upload-zone">
-            <i class="fas fa-cloud-upload-alt icon-upload" aria-hidden="true"></i>
-            <span class="upload-text" data-i18n="uploadText"></span>
-            <span class="upload-hint" data-i18n="uploadHint"></span>
-            <input type="file" id="fileInput" accept=".xml,.zip,application/zip,application/x-zip-compressed" multiple>
-        </div>
-        <div id="inline-notice" class="inline-notice" aria-live="polite"></div>
+    <div id="main-content-shell" class="main-content-shell">
+    <nav class="top-tabs" role="tablist" aria-label="Main module tabs">
+        <button id="tab-xml2pdf" class="tab-btn active" type="button" role="tab" aria-selected="true" data-tab-target="xml2pdf-view" data-i18n="tabXml2Pdf"></button>
+        <button id="tab-offers" class="tab-btn" type="button" role="tab" aria-selected="false" data-tab-target="offers-view" data-i18n="tabOffers"></button>
+    </nav>
 
-        <div id="detected-section" style="display:none">
-            <div class="section-header">
-                <div class="section-title" data-i18n="detectedTitle"></div>
-                <button id="select-all-btn" class="btn-small" data-i18n="selectAll"></button>
+    <section id="xml2pdf-view" class="tab-view active" role="tabpanel">
+        <div id="main-view">
+            <div id="upload-zone">
+                <i class="fas fa-cloud-upload-alt icon-upload" aria-hidden="true"></i>
+                <span class="upload-text" data-i18n="uploadText"></span>
+                <span class="upload-hint" data-i18n="uploadHint"></span>
+                <input type="file" id="fileInput" accept=".xml,.zip,application/zip,application/x-zip-compressed" multiple>
             </div>
-            <div class="file-list" id="detected-list"></div>
-            <button id="convert-detected-btn" class="btn">
-                <i class="fas fa-sync-alt" aria-hidden="true"></i>
-                <span id="convert-btn-label"></span>
-            </button>
-        </div>
+            <div id="inline-notice" class="inline-notice" aria-live="polite"></div>
 
-        <div id="results-section" style="display:none">
-            <div class="section-header">
-                <div class="section-title" data-i18n="resultsTitle"></div>
-                <button id="clear-btn" class="btn-small" style="color:var(--text-light)" data-i18n="clearAll"></button>
+            <div id="detected-section" class="is-hidden">
+                <div class="section-header">
+                    <div class="section-title" data-i18n="detectedTitle"></div>
+                    <button id="select-all-btn" class="btn-small" data-i18n="selectAll"></button>
+                </div>
+                <div class="file-list" id="detected-list"></div>
+                <button id="convert-detected-btn" class="btn">
+                    <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                    <span id="convert-btn-label"></span>
+                </button>
             </div>
-            <div class="file-list" id="results-list"></div>
-            <button id="download-all-btn" class="btn">
-                <i class="fas fa-file-archive" aria-hidden="true"></i>
-                <span id="download-all-label" data-i18n="downloadAllZip"></span>
-            </button>
+
+            <div id="results-section" class="is-hidden">
+                <div class="section-header">
+                    <div class="section-title" data-i18n="resultsTitle"></div>
+                    <button id="clear-btn" class="btn-small btn-small-muted" data-i18n="clearAll"></button>
+                </div>
+                <div class="file-list" id="results-list"></div>
+                <button id="download-all-btn" class="btn">
+                    <i class="fas fa-file-archive" aria-hidden="true"></i>
+                    <span id="download-all-label" data-i18n="downloadAllZip"></span>
+                </button>
+            </div>
         </div>
+    </section>
+
+    <section id="offers-view" class="tab-view" role="tabpanel">
+        <div class="offers-shell">
+            <section class="offers-section offers-generated-sticky is-hidden" id="offer-results-section">
+                <div class="offers-generated-head">
+                    <div class="section-title" data-i18n="offerGeneratedTitle"></div>
+                    <button id="offer-clear-generated-btn" class="btn-small" type="button" data-i18n="offerClearGenerated"></button>
+                </div>
+                <div id="offer-results-list" class="file-list"></div>
+            </section>
+
+            <section class="offers-section">
+                <div class="offers-header">
+                    <h3 class="offers-title" data-i18n="offersTitle"></h3>
+                    <p class="offers-subtitle" data-i18n="offersSubtitle"></p>
+                </div>
+            </section>
+
+            <section class="offers-section offer-parties-section">
+                <div class="offer-parties-grid">
+                    <div class="offer-party">
+                        <div class="offer-party-head">
+                            <span class="offer-party-label" data-i18n="offerIssuerSection"></span>
+                            <button id="offer-open-settings-btn" class="settings-link-btn" type="button" data-i18n="offerChangeInSettings"></button>
+                        </div>
+                        <div id="offer-form-issuer-card" class="issuer-pill" data-i18n="offerIssuerNoneSelected"></div>
+                    </div>
+                    <div class="offer-party">
+                        <div class="offer-party-head">
+                            <span class="offer-party-label" data-i18n="offerCustomerSection"></span>
+                        </div>
+                        <div class="issuer-pill offer-buyer-card">
+                            <div class="offer-field">
+                                <label for="offer-customer-name" data-i18n="offerCustomerNameLabel"></label>
+                                <div class="autocomplete-wrap">
+                                    <input id="offer-customer-name" class="text-input" type="text" autocomplete="off">
+                                    <div id="buyer-name-suggestions" class="autocomplete-panel"></div>
+                                </div>
+                            </div>
+                            <div class="offer-field">
+                                <label for="offer-customer-oib" data-i18n="offerCustomerOibLabel"></label>
+                                <div class="autocomplete-wrap">
+                                    <input id="offer-customer-oib" class="text-input" type="text" autocomplete="off">
+                                    <div id="buyer-oib-suggestions" class="autocomplete-panel"></div>
+                                </div>
+                            </div>
+                            <div class="offer-field">
+                                <label for="offer-customer-address" data-i18n="offerCustomerAddressLabel"></label>
+                                <input id="offer-customer-address" class="text-input" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="offers-section offer-collapsible" data-offer-section="details">
+                <button type="button" class="offer-section-toggle" data-offer-section-toggle="details" aria-expanded="true">
+                    <span class="section-title" data-i18n="offerDetailsSection"></span>
+                    <span id="offer-details-excerpt" class="offer-section-excerpt"></span>
+                    <i class="fas fa-chevron-down offer-section-chevron" aria-hidden="true"></i>
+                </button>
+                <div class="offer-section-body" data-offer-section-body="details">
+                    <div class="offer-meta-grid">
+                        <div class="offer-field">
+                            <label for="offer-number" data-i18n="offerNumberLabel"></label>
+                            <input id="offer-number" class="text-input" type="text" autocomplete="off">
+                        </div>
+                        <div class="offer-field">
+                            <label for="offer-issue-date" data-i18n="offerIssueDateLabel"></label>
+                            <input id="offer-issue-date" class="date-input" type="date">
+                        </div>
+                        <div class="offer-field">
+                            <label for="offer-valid-until" data-i18n="offerValidUntilLabel"></label>
+                            <input id="offer-valid-until" class="date-input" type="date">
+                        </div>
+                    </div>
+                    <div class="offer-grid-single offer-details-text">
+                        <div class="offer-field">
+                            <label for="offer-intro" data-i18n="offerIntroLabel"></label>
+                            <textarea id="offer-intro" class="textarea-input"></textarea>
+                        </div>
+                        <div class="offer-field">
+                            <label for="offer-specification" data-i18n="offerSpecificationLabel"></label>
+                            <textarea id="offer-specification" class="textarea-input"></textarea>
+                        </div>
+                        <div class="offer-field">
+                            <label for="offer-note" data-i18n="offerNoteLabel"></label>
+                            <textarea id="offer-note" class="textarea-input"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="offers-section offer-collapsible" data-offer-section="items">
+                <button type="button" class="offer-section-toggle" data-offer-section-toggle="items" aria-expanded="true">
+                    <span class="section-title" data-i18n="offerItemsSection"></span>
+                    <i class="fas fa-chevron-down offer-section-chevron" aria-hidden="true"></i>
+                </button>
+                <div class="offer-section-body" data-offer-section-body="items">
+                    <table class="offer-items-table">
+                        <colgroup>
+                            <col class="col-desc">
+                            <col class="col-num col-qty">
+                            <col class="col-num col-unit">
+                            <col class="col-num col-price">
+                            <col class="col-num col-discount">
+                            <col class="col-num col-total">
+                            <col class="col-actions">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-i18n="offerItemDescription"></th>
+                                <th class="th-num" data-i18n="offerItemQty"></th>
+                                <th class="th-num" data-i18n="offerItemUnit"></th>
+                                <th class="th-num" data-i18n="offerItemUnitPrice"></th>
+                                <th class="th-num" data-i18n="offerItemDiscount"></th>
+                                <th class="th-num" data-i18n="offerItemTotal"></th>
+                                <th aria-hidden="true"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="offer-items-body"></tbody>
+                    </table>
+                    <div class="offer-footer-actions">
+                        <button id="offer-add-item" class="btn btn-outline" type="button">
+                            <i class="fas fa-plus" aria-hidden="true"></i>
+                            <span data-i18n="offerAddItem"></span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="offers-section offer-collapsible" data-offer-section="summary">
+                <button type="button" class="offer-section-toggle" data-offer-section-toggle="summary" aria-expanded="true">
+                    <span class="section-title" data-i18n="offerSummarySection"></span>
+                    <i class="fas fa-chevron-down offer-section-chevron" aria-hidden="true"></i>
+                </button>
+                <div class="offer-section-body" data-offer-section-body="summary">
+                    <div class="offer-grid-single">
+                        <div class="offer-field range-stack">
+                            <label for="offer-vat-rate" data-i18n="offerVatRateLabel"></label>
+                            <div class="range-row">
+                                <input id="offer-vat-rate" class="range-input" type="range" min="0" max="25" step="1" value="25">
+                                <span id="offer-vat-rate-value" class="range-value">25%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary-list" id="offer-summary">
+                        <div class="summary-row">
+                            <span class="summary-label" data-i18n="offerSummaryStandard"></span>
+                            <span id="offer-standard-price">0,00 EUR</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label" data-i18n="offerSummaryDiscount"></span>
+                            <span id="offer-discount-amount">0,00 EUR</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label" data-i18n="offerSummaryNet"></span>
+                            <span id="offer-net-base">0,00 EUR</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label" data-i18n="offerSummaryVat"></span>
+                            <span id="offer-vat-amount">0,00 EUR</span>
+                        </div>
+                        <div class="summary-row">
+                            <strong class="summary-label" data-i18n="offerSummaryTotal"></strong>
+                            <strong id="offer-total-amount">0,00 EUR</strong>
+                        </div>
+                    </div>
+                    <div class="offer-footer-actions offer-footer-actions-summary">
+                        <button id="offer-generate-btn" class="btn" type="button">
+                            <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                            <span data-i18n="offerGeneratePdf"></span>
+                        </button>
+                        <button id="offer-reset-btn" class="btn btn-outline" type="button">
+                            <i class="fas fa-redo" aria-hidden="true"></i>
+                            <span data-i18n="offerResetForm"></span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
     </div>
 
     <div class="footer">
@@ -709,10 +2083,39 @@
         <div class="preview-card" role="dialog" aria-modal="true">
             <div class="preview-header">
                 <div id="preview-title" class="preview-title"></div>
-                <button type="button" id="preview-close" class="preview-close" aria-label="Close preview">&times;</button>
+                <button type="button" id="preview-close" class="preview-close" data-i18n-attr="aria-label:modalClose">&times;</button>
             </div>
             <div class="preview-body">
                 <iframe id="preview-iframe" class="preview-iframe" title="PDF preview"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="offer-preview-overlay" class="preview-overlay" aria-hidden="true">
+        <div class="preview-card" role="dialog" aria-modal="true">
+            <div class="preview-header">
+                <div id="offer-preview-title" class="preview-title"></div>
+                <button type="button" id="offer-preview-close" class="preview-close" data-i18n-attr="aria-label:modalClose">&times;</button>
+            </div>
+            <div class="preview-body">
+                <iframe id="offer-preview-iframe" class="preview-iframe" title="Offer PDF preview"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="offer-import-overlay" class="preview-overlay" aria-hidden="true">
+        <div class="preview-card" role="dialog" aria-modal="true">
+            <div class="preview-header">
+                <div id="offer-import-title" class="preview-title" data-i18n="offerImportConfirmTitle"></div>
+                <button type="button" id="offer-import-close" class="preview-close" data-i18n-attr="aria-label:offerImportConfirmClose">&times;</button>
+            </div>
+            <div class="preview-body">
+                <div class="offer-import-note" data-i18n="offerImportConfirmMessage"></div>
+                <ul id="offer-import-list" class="import-list"></ul>
+                <div class="import-actions">
+                    <button type="button" id="offer-import-cancel" class="btn btn-outline" data-i18n="offerImportConfirmCancel"></button>
+                    <button type="button" id="offer-import-apply" class="btn" data-i18n="offerImportConfirmApply"></button>
+                </div>
             </div>
         </div>
     </div>
@@ -723,8 +2126,11 @@
     <script src="./lib/jspdf.plugin.autotable.min.js"></script>
 
     <!-- Scripts -->
+    <script src="shared.js"></script>
     <script src="invoice-parser.js"></script>
     <script src="pdf-generator.js"></script>
+    <script src="offer-pdf-generator.js"></script>
     <script src="popup.js"></script>
+    <script src="offers.js"></script>
 </body>
 </html>

@@ -46,9 +46,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-**Aning usluge d.o.o.**
+**Aning usluge d.o.o. / Matija Radeljak**
 * Website: [aning.hr](https://aning.hr)
-* GitHub: [@AningUsluge](https://github.com/AningUsluge)
+* GitHub: [@matijarma](https://github.com/matijarma)
 
 ---
 *Developed to support the Croatian business community during the transition to Fiscalization 2.0 (Jan 2026).*

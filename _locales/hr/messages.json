@@ -1,60 +1,69 @@
-﻿{
+{
   "groupApp": {
     "message": "Aplikacija"
   },
   "groupPdf": {
-    "message": "PDF Postavke"
+    "message": "PDF postavke"
+  },
+  "groupOffers": {
+    "message": "Ponude"
   },
   "groupStorage": {
     "message": "Pohrana"
   },
   "extensionName": {
-    "message": "XML u PDF konverter E-ra\u010duna"
+    "message": "XMLuPDF i izrada ponuda"
   },
   "extensionDescription": {
-    "message": "Detektira i konvertira hrvatske UBL e-ra\u010dune u PDF."
+    "message": "Pretvara hrvatske UBL e-racune u PDF i generira profesionalne ponude."
   },
   "pageTitle": {
-    "message": "XML u PDF"
+    "message": "XMLuPDF i Ponude"
   },
   "appTitle": {
-    "message": "XML u PDF konverter E-ra\u010duna"
+    "message": "XMLuPDF i izrada ponuda"
   },
   "appSubtitle": {
-    "message": "Brzo i sigurno generiranje PDF-a iz eRa\u010dun XML-a"
+    "message": "XML u PDF i generator ponuda, lokalno u pregledniku"
   },
   "privacyNoteHtml": {
-    "message": "Aplikacija radi isklju\u010divo u pregledniku - podatci nikada ne napu\u0161taju va\u0161e ra\u010dunalo.<br/><b>PDF ra\u010dun <u>nije</u> pravni dokument.</b>"
+    "message": "Aplikacija radi iskljucivo u pregledniku, podatci nikada ne napustaju vase racunalo.<br/><b>PDF racun i PDF ponuda nisu pravni dokumenti.</b>"
+  },
+  "tabXml2Pdf": {
+    "message": "XML2PDF"
+  },
+  "tabOffers": {
+    "message": "Ponude"
   },
   "settingsButton": {
     "message": "Postavke"
   },
   "settingDisplayMode": {
-    "message": "Na\u010din prikaza"
+    "message": "Nacin prikaza"
   },
   "settingTheme": {
     "message": "Tema"
   },
   "settingLanguage": {
-    "message": "Language"
+    "message": "Jezik aplikacije"
   },
   "settingPdfLanguage": {
-    "message": "Jezik PDF računa"
+    "message": "Jezik PDF racuna"
   },
   "settingRetention": {
-    "message": "Zadr\u017ei PDF/XML u pregledniku na ovom ra\u010dunalu"
+    "message": "Zadrzi PDF/XML u pregledniku na ovom racunalu"
   },
   "retentionDays": {
     "message": "$1 "
   },
   "retentionDaysSingle": {
-    "message": " dan"
+    "message": "dan"
   },
   "retentionDaysPlural": {
     "message": "dana"
   },
   "retentionImmediate": {
-    "message": "0 (bri\u0161e se pri zatvaranju)"
+    "message": "0 (brise se pri zatvaranju)"
   },
   "settingPdfColor": {
     "message": "Boja"
@@ -62,14 +71,53 @@
   "settingPdfLogo": {
     "message": "Logo"
   },
+  "settingPdfScopeNote": {
+    "message": "Vrijedi za racune i ponude."
+  },
   "pdfLogoUpload": {
-    "message": "U\u010ditaj logo"
+    "message": "Ucitaj logo"
   },
   "pdfLogoChange": {
     "message": "Promijeni logo"
   },
   "pdfLogoRemove": {
     "message": "Ukloni"
+  },
+  "offerSettingIssuerName": {
+    "message": "Naziv izdavatelja"
+  },
+  "offerSettingIssuerAddress": {
+    "message": "Adresa izdavatelja"
+  },
+  "offerSettingIssuerCity": {
+    "message": "Postanski broj i grad"
+  },
+  "offerSettingIssuerOib": {
+    "message": "OIB izdavatelja"
+  },
+  "offerSettingIssuerIban": {
+    "message": "IBAN"
+  },
+  "offerSettingIssuerContact": {
+    "message": "Kontakt osoba"
+  },
+  "offerSettingIssuerEmail": {
+    "message": "Email"
+  },
+  "offerSettingIssuerWeb": {
+    "message": "Web stranica"
+  },
+  "offerSettingNumberPrefix": {
+    "message": "Prefiks broja ponude (opcionalno)"
+  },
+  "offerSettingDefaultVat": {
+    "message": "Zadani PDV (%)"
+  },
+  "offerSettingValidityDays": {
+    "message": "Zadani rok valjanosti (dana)"
+  },
+  "offerSettingDefaultNote": {
+    "message": "Zadana napomena"
   },
   "languageCroatian": {
     "message": "Hrvatski"
@@ -81,16 +129,16 @@
     "message": "Klikni ili povuci XML ili ZIP datoteke"
   },
   "uploadHint": {
-    "message": "ZIP arhive mogu sadr\u017eavati vi\u0161e XML datoteka"
+    "message": "ZIP arhive mogu sadrzavati vise XML datoteka"
   },
   "detectedTitle": {
-    "message": "Prona\u0111eno na stranici"
+    "message": "Pronadeno na stranici"
   },
   "selectAll": {
     "message": "Odaberi sve"
   },
   "deselectAll": {
-    "message": "Poni\u0161ti odabir"
+    "message": "Ponisti odabir"
   },
   "convertSelectedCount": {
     "message": "Pretvori odabrano ($1)"
@@ -99,7 +147,7 @@
     "message": "Rezultati konverzije"
   },
   "clearAll": {
-    "message": "Obri\u0161i sve"
+    "message": "Obrisi sve"
   },
   "downloadAllZip": {
     "message": "Preuzmi sve (ZIP)"
@@ -114,16 +162,16 @@
     "message": "Ukloni datoteku"
   },
   "noticeInvalidXml": {
-    "message": "Presko\u010deno $1 datoteka: nije valjani e-Ra\u010dun XML."
+    "message": "Preskoceno $1 datoteka: nije valjani e-Racun XML."
   },
   "noticeDuplicateSkipped": {
-    "message": "Presko\u010deno $1 duplikata (identi\u010dna datoteka + postavke ve\u0107 postoje)."
+    "message": "Preskoceno $1 duplikata (identicna datoteka + postavke vec postoje)."
   },
   "noticeZipNoValid": {
-    "message": "ZIP \"$1\": nije prona\u0111en nijedan valjani e-Ra\u010dun XML."
+    "message": "ZIP \"$1\": nije pronaden nijedan valjani e-Racun XML."
   },
   "noticeZipSummary": {
-    "message": "ZIP \"$1\": valjanih XML $2, pretvoreno $3, presko\u010deno $4 (ve\u0107 postoji)."
+    "message": "ZIP \"$1\": valjanih XML $2, pretvoreno $3, preskoceno $4 (vec postoji)."
   },
   "noticeZipSummaryNoDuplicates": {
     "message": "ZIP \"$1\": valjanih XML $2, pretvoreno $3."
@@ -153,22 +201,22 @@
     "message": "Jezik"
   },
   "legendExpires": {
-    "message": "Istje\u010de"
+    "message": "Istjece"
   },
   "backToStart": {
-    "message": "Natrag na po\u010detak"
+    "message": "Natrag na pocetak"
   },
   "footerLinkText": {
     "message": "Aning usluge - Knjigovodstvo i porezno savjetovanje"
   },
   "displayModeLabel": {
-    "message": "Na\u010din prikaza"
+    "message": "Nacin prikaza"
   },
   "displayModePopup": {
     "message": "Popup"
   },
   "displayModeSidepanel": {
-    "message": "Bo\u010dni panel"
+    "message": "Bocni panel"
   },
   "themeModeLabel": {
     "message": "Tema"
@@ -186,10 +234,10 @@
     "message": "Preuzmi"
   },
   "errorProcessingFile": {
-    "message": "Gre\u0161ka kod: $1"
+    "message": "Greska kod: $1"
   },
   "errorFileNotFound": {
-    "message": "Gre\u0161ka: Datoteka nije prona\u0111ena u memoriji."
+    "message": "Greska: Datoteka nije pronadena u memoriji."
   },
   "pdfFileName": {
     "message": "Racun-$1.pdf"
@@ -201,13 +249,13 @@
     "message": "nepoznato"
   },
   "pdfInvoiceTitle": {
-    "message": "RA\u010cUN"
+    "message": "RACUN"
   },
   "pdfIssueDateLabel": {
     "message": "Datum izdavanja:"
   },
   "pdfDueDateLabel": {
-    "message": "Datum dospije\u0107a:"
+    "message": "Datum dospijeca:"
   },
   "pdfDeliveryDateLabel": {
     "message": "Datum isporuke:"
@@ -234,7 +282,7 @@
     "message": "Opis stavke"
   },
   "pdfTableQuantity": {
-    "message": "Koli\u010dina"
+    "message": "Kolicina"
   },
   "pdfTableUnitPrice": {
     "message": "Cijena"
@@ -255,10 +303,10 @@
     "message": "SVEUKUPNO:"
   },
   "pdfPaymentHeading": {
-    "message": "Podaci za pla\u0107anje:"
+    "message": "Podaci za placanje:"
   },
   "pdfPaymentMethodLabel": {
-    "message": "Na\u010din:"
+    "message": "Nacin:"
   },
   "pdfPaymentAccountLabel": {
     "message": "IBAN:"
@@ -270,6 +318,297 @@
     "message": "Napomena:"
   },
   "pdfLegalNotice": {
-    "message": "Ovaj dokument nije pravni dokument. PDF je automatski generiran iz e-ra\u010dun XML-a."
+    "message": "Ovaj dokument nije pravni dokument. PDF je automatski generiran iz e-racun XML-a."
+  },
+  "offersTitle": {
+    "message": "Generator ponuda"
+  },
+  "offersSubtitle": {
+    "message": "Kreirajte profesionalne ponude, pregledajte PDF i preuzmite odmah."
+  },
+  "offerSettingsIssuerTitle": {
+    "message": "Izdavatelji"
+  },
+  "offerSettingsDefaultsTitle": {
+    "message": "Zadane postavke ponuda"
+  },
+  "offerIssuerAdd": {
+    "message": "Novi"
+  },
+  "offerIssuerEdit": {
+    "message": "Uredi"
+  },
+  "offerIssuerSave": {
+    "message": "Spremi"
+  },
+  "offerIssuerCancel": {
+    "message": "Odustani"
+  },
+  "offerIssuerRemove": {
+    "message": "Ukloni izdavatelja"
+  },
+  "offerIssuerNoneSelected": {
+    "message": "Nije odabran nijedan izdavatelj."
+  },
+  "offerIssuerNoneAvailable": {
+    "message": "Nema spremljenih izdavatelja"
+  },
+  "offerIssuerSelectFirst": {
+    "message": "Prvo odaberite izdavatelja."
+  },
+  "offerIssuerEditorTitleNew": {
+    "message": "Novi izdavatelj"
+  },
+  "offerIssuerEditorTitleEdit": {
+    "message": "Uredi izdavatelja"
+  },
+  "offerIssuerModeImport": {
+    "message": "Uvezi XML"
+  },
+  "offerIssuerModeManual": {
+    "message": "Unesi rucno"
+  },
+  "offerIssuerSourceManualShort": {
+    "message": "RUCNO"
+  },
+  "offerIssuerSourceXmlShort": {
+    "message": "XML"
+  },
+  "offerImportIssuer": {
+    "message": "Uvezi izdavatelja iz e-racuna XML"
+  },
+  "offerImportHint": {
+    "message": "Ucitajte jedan XML e-racuna za automatsko popunjavanje podataka izdavatelja."
+  },
+  "offerMetaSection": {
+    "message": "Meta podaci"
+  },
+  "offerHeaderSection": {
+    "message": "Zaglavlje ponude"
+  },
+  "offerChangeInSettings": {
+    "message": "Promijeni u postavkama"
+  },
+  "offerNumberLabel": {
+    "message": "Broj ponude"
+  },
+  "offerIssueDateLabel": {
+    "message": "Datum izdavanja"
+  },
+  "offerValidUntilLabel": {
+    "message": "Rok valjanosti"
+  },
+  "offerIssuerSection": {
+    "message": "Izdavatelj"
+  },
+  "offerCustomerSection": {
+    "message": "Kupac"
+  },
+  "offerCustomerNameLabel": {
+    "message": "Naziv kupca"
+  },
+  "offerCustomerAddressLabel": {
+    "message": "Adresa kupca"
+  },
+  "offerCustomerOibLabel": {
+    "message": "OIB kupca"
+  },
+  "offerContentSection": {
+    "message": "Sadrzaj ponude"
+  },
+  "offerIntroLabel": {
+    "message": "Uvod"
+  },
+  "offerSpecificationLabel": {
+    "message": "Specifikacija usluge"
+  },
+  "offerNoteLabel": {
+    "message": "Napomena o opsegu i dodatnim radovima"
+  },
+  "offerItemsSection": {
+    "message": "Stavke ponude"
+  },
+  "offerItemDescription": {
+    "message": "Opis"
+  },
+  "offerItemQty": {
+    "message": "Kol."
+  },
+  "offerItemUnit": {
+    "message": "Jedinica"
+  },
+  "offerItemUnitPrice": {
+    "message": "Jed. cijena"
+  },
+  "offerItemDiscount": {
+    "message": "Popust"
+  },
+  "offerItemTotal": {
+    "message": "Ukupno"
+  },
+  "offerItemDescriptionPlaceholder": {
+    "message": "Opis stavke ili faze"
+  },
+  "offerItemUnitPlaceholder": {
+    "message": "h, kom, mj."
+  },
+  "offerItemRemove": {
+    "message": "Ukloni stavku"
+  },
+  "offerAddItem": {
+    "message": "Dodaj stavku"
+  },
+  "offerSummarySection": {
+    "message": "Financijski sazetak"
+  },
+  "offerDiscountLabel": {
+    "message": "Popust (%)"
+  },
+  "offerVatRateLabel": {
+    "message": "PDV (%)"
+  },
+  "offerSummaryStandard": {
+    "message": "Standardna cijena"
+  },
+  "offerSummaryDiscount": {
+    "message": "Popust"
+  },
+  "offerSummaryNet": {
+    "message": "Neto osnovica"
+  },
+  "offerSummaryVat": {
+    "message": "PDV"
+  },
+  "offerSummaryTotal": {
+    "message": "Ukupno za platiti"
+  },
+  "offerGeneratePdf": {
+    "message": "Generiraj PDF ponude"
+  },
+  "offerResetForm": {
+    "message": "Resetiraj formu"
+  },
+  "offerClearGenerated": {
+    "message": "Obrisi generirane"
+  },
+  "offerGeneratedTitle": {
+    "message": "Generirane ponude"
+  },
+  "offerPreviewPdf": {
+    "message": "Pregled"
+  },
+  "offerDownloadPdf": {
+    "message": "Preuzmi"
+  },
+  "offerLabelValidUntil": {
+    "message": "Vrijedi do"
+  },
+  "offerBuyerRemove": {
+    "message": "Ukloni kupca iz autofilla"
+  },
+  "offerImportConfirmTitle": {
+    "message": "Potvrda uvoza podataka izdavatelja"
+  },
+  "offerImportConfirmMessage": {
+    "message": "Pronasli smo sljedece podatke izdavatelja u XML-u. Potvrdite zelite li ih primijeniti u postavke i formu ponude."
+  },
+  "offerImportConfirmCancel": {
+    "message": "Odustani"
+  },
+  "offerImportConfirmApply": {
+    "message": "Primijeni podatke"
+  },
+  "offerErrorGeneratorUnavailable": {
+    "message": "Generator ponuda trenutno nije dostupan."
+  },
+  "offerErrorIssuerNameRequired": {
+    "message": "Unesite naziv izdavatelja."
+  },
+  "offerErrorCustomerNameRequired": {
+    "message": "Unesite naziv kupca."
+  },
+  "offerErrorNoItems": {
+    "message": "Dodajte barem jednu stavku ponude."
+  },
+  "offerErrorGenerationFailed": {
+    "message": "Generiranje PDF ponude nije uspjelo."
+  },
+  "offerErrorBlobMissing": {
+    "message": "PDF ponude nije pronaden u memoriji."
+  },
+  "offerErrorInvalidXml": {
+    "message": "Datoteka nije valjani e-racun XML."
+  },
+  "offerErrorImportNoIssuerData": {
+    "message": "U XML-u nisu pronadeni podaci izdavatelja."
+  },
+  "offerPdfTitle": {
+    "message": "PONUDA"
+  },
+  "offerPdfIssuerLabel": {
+    "message": "IZDAVATELJ"
+  },
+  "offerPdfCustomerLabel": {
+    "message": "KUPAC"
+  },
+  "offerPdfMetaNumber": {
+    "message": "Broj ponude"
+  },
+  "offerPdfMetaIssueDate": {
+    "message": "Datum izdavanja"
+  },
+  "offerPdfMetaValidUntil": {
+    "message": "Rok valjanosti"
+  },
+  "offerPdfIntroLabel": {
+    "message": "Uvod"
+  },
+  "offerPdfSpecificationLabel": {
+    "message": "Specifikacija"
+  },
+  "offerPdfTableNo": {
+    "message": "#"
+  },
+  "offerPdfTableDescription": {
+    "message": "Opis"
+  },
+  "offerPdfTableQuantity": {
+    "message": "Kolicina"
+  },
+  "offerPdfTableUnitPrice": {
+    "message": "Jed. cijena"
+  },
+  "offerPdfTableDiscount": {
+    "message": "Popust"
+  },
+  "offerPdfTableTotal": {
+    "message": "Ukupno"
+  },
+  "offerPdfNoteLabel": {
+    "message": "Napomena"
+  },
+  "modalClose": {
+    "message": "Zatvori"
+  },
+  "offerImportConfirmClose": {
+    "message": "Zatvori potvrdu uvoza"
+  },
+  "confirmActionRepeat": {
+    "message": "Kliknite ponovno za potvrdu"
+  },
+  "offerGenerating": {
+    "message": "Generiranje..."
+  },
+  "offerGeneratedSuccess": {
+    "message": "Ponuda je generirana."
+  },
+  "saving": {
+    "message": "Spremanje..."
+  },
+  "offerIssuerHasReferences": {
+    "message": "Postojece ponude i dalje upucuju na ovog izdavatelja."
+  },
+  "offerDetailsSection": {
+    "message": "Detalji ponude"
   }
 }
